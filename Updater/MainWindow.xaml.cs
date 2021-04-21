@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -30,12 +29,13 @@ namespace Updater
          */
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
+            Helper.RunFile(NotifierPath);
             ContentSystem contentSystem = new ContentSystem(ViewModel, LinksPanel, RatingTabControl);
             contentSystem.Start();
-
-            ToggleTabTimer.Tick += (o, args) => ToggleTab();
-            ToggleTabTimer.Interval = TimeSpan.FromSeconds(5);
-            ToggleTabTimer.Start();
+            
+            _toggleTabTimer.Tick += (o, args) => ToggleTab();
+            _toggleTabTimer.Interval = TimeSpan.FromSeconds(5);
+            _toggleTabTimer.Start();
 
 #if DEBUG
 #else
@@ -73,7 +73,7 @@ namespace Updater
             try
             {
                 // Закрыть игру
-                Helper.ShutdownGame();
+                Helper.ShutdownProcess("game");
                 if (Global.IsGameStarted())
                 {
                     string text = Strings.Get(StringType.REQUIRED_CLOSE_THE_GAME);
@@ -97,11 +97,9 @@ namespace Updater
                 
                 // Запуск игры
                 ViewModel.Label3 = Strings.Get(StringType.Starting);
+                Helper.RunFile(NotifierPath);
                 Helper.RunFile(GameExePath, "start");
-
-                // Скрыть окно
-                WindowState = WindowState.Minimized;
-                Hide();
+                Application.Current.Shutdown();
             }
             catch (Exception ex)
             {
@@ -123,26 +121,6 @@ namespace Updater
                 : RatingTabControl.SelectedIndex + 1;
             RatingTabControl.SelectedIndex = newIndex;
         }
-        
-        /// <summary>
-        /// Загрузить контент апдейтера.
-        /// </summary>
-        private async void StartTickTimer()
-        {
-            while (true)
-            {
-                try
-                {
-                    await Task.Delay(5000);
-                    ToggleTab();
-                }
-                catch
-                {
-                    // ignored
-                }
-            }
-        }
-
         
 
         /*
@@ -172,11 +150,13 @@ namespace Updater
         /// </summary>
         private MainWindowViewModel ViewModel { get; } = new MainWindowViewModel();
 
-        private DispatcherTimer ToggleTabTimer = new DispatcherTimer();
+        private readonly DispatcherTimer _toggleTabTimer = new DispatcherTimer();
 
         /// <summary>
         /// Название файла game
         /// </summary>
         private static readonly string GameExePath = Path.Combine(Global.ClientPath, Properties.Resources.Game + ".exe");
+
+        private static readonly string NotifierPath = Path.Combine(Global.ClientPath, "notifier.exe");
     }
 }

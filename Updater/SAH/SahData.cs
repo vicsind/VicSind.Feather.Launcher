@@ -33,7 +33,7 @@ namespace Updater.SAH
             try
             {
                 // Чтение с шифрованием
-                Load(Convert.ToByte(Properties.Resources.FileCountXorKey));
+                Load(XorKey);
             }
             catch
             {
@@ -208,7 +208,8 @@ namespace Updater.SAH
 
         private static void WriteFiles(BinaryWriter writer, SahFolder folder)
         {
-            writer.Write(folder.Files.Count);
+            int filesCount = folder.Files.Count ^ XorKey;
+            writer.Write(filesCount);
             foreach (SahFile file in folder.Files)
             {
                 writer.Write(file.Name.Length + 1);
@@ -240,5 +241,7 @@ namespace Updater.SAH
             }
         }
         #endregion
+
+        private static byte XorKey => Convert.ToByte(Properties.Resources.FileCountXorKey);
     }
 }

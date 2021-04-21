@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading;
-using Newtonsoft.Json;
 using Updater.Common;
 using Updater.Content;
 using Updater.ViewModels;
@@ -77,10 +77,12 @@ namespace Updater.Updating
         private void DownloadFile(ClientFile actualFile)
         {
             Thread.Sleep(500);
+            // Kill process.
+            if (Path.GetExtension(actualFile.Name)?.ToLower() == ".exe")
+                Helper.ShutdownProcess(Path.GetFileNameWithoutExtension(actualFile.Name));
             // Remove current file.
             string filePath = Path.Combine(Global.ClientPath, actualFile.Name);
             Helper.DeleteFile(filePath);
-            //MessageBox.Show($"Downloading {actualFile.Name} to \n{filePath}");
 
             // Download new file.
             _viewModel.Label1 = Strings.Get(StringType.Downloading); // "Загрузка"
@@ -157,7 +159,7 @@ namespace Updater.Updating
         /// <summary>
         /// WebSite url with information about actual client files.
         /// </summary>
-        private static string ClientFilesUrl => Environment.Is64BitOperatingSystem ? Global.SiteUrl + "files-x64" : Global.SiteUrl + "files";
+        private static string ClientFilesUrl => Global.SiteUrl + "files";
 
         /// <summary>
         /// WebSite url with information about banned files.
@@ -167,6 +169,6 @@ namespace Updater.Updating
         /// <summary>
         /// Url to actual client files.
         /// </summary>
-        private static string FilesUrl => Environment.Is64BitOperatingSystem ? Global.SiteUrl + "client-x64/" : Global.SiteUrl + "client/";
+        private static string FilesUrl => Global.SiteUrl + "client/";
     }
 }

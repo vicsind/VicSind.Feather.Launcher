@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
 using System.Threading;
+using System.Windows;
 using Updater.Logging;
 
 namespace Updater
@@ -46,13 +47,13 @@ namespace Updater
         /// <summary>
         /// Закрыть игру
         /// </summary>
-        #region ShutdownGame
+        #region ShutdownProcess
 
-        public static bool ShutdownGame()
+        public static bool ShutdownProcess(string name)
         {
             try
             {
-                Process[] proc = Process.GetProcessesByName("game");
+                Process[] proc = Process.GetProcessesByName(name);
                 foreach (Process process in proc)
                     process.Kill();
                 return true;
@@ -134,7 +135,7 @@ namespace Updater
         /// <summary>
         /// Запустить апдейтер с указанными аргументами
         /// </summary>
-        public static void RunFile(string fileName, string args)
+        public static void RunFile(string fileName, string args = "")
         {
             Process process = new Process
             {
