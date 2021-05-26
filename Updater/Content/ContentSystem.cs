@@ -36,14 +36,21 @@ namespace Updater.Content
 
         private async Task LoadContent()
         {
-            var news = await UpdaterContent.LoadNews();
-            ViewModel.SetNews(news);
-            var banners = await UpdaterContent.LoadBanners();
-            ViewModel.SetBanners(banners);
-            var menu = await UpdaterContent.LoadLinks();
-            SetMenu(menu);
-            var ratings = await UpdaterContent.LoadRatings();
-            SetRatings(ratings);
+            try
+            {
+                var news = await UpdaterContent.LoadNews();
+                ViewModel.SetNews(news);
+                var banners = await UpdaterContent.LoadBanners();
+                ViewModel.SetBanners(banners);
+                var menu = await UpdaterContent.LoadLinks();
+                SetMenu(menu);
+                var ratings = await UpdaterContent.LoadRatings();
+                SetRatings(ratings);
+            }
+            catch
+            {
+                // ignored
+            }
         }
         
         /// <summary>

@@ -491,7 +491,7 @@
                                 BorderThickness="1" BorderBrush="#FF473A23">
                                 <Border BorderThickness="1" BorderBrush="#FF907546">
                                     <Grid VerticalAlignment="Center" HorizontalAlignment="Left"
-                                      Background="#FFB85D28" Width="{Binding ProgressDark}" Height="10"
+                                      Background="#FF2B5187" Width="{Binding ProgressDark}" Height="10"
                                       Canvas.ZIndex="1">
                                     </Grid>
                                 </Border>

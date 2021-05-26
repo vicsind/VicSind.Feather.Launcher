@@ -29,7 +29,6 @@ namespace Updater
          */
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            Helper.RunFile(NotifierPath);
             ContentSystem contentSystem = new ContentSystem(ViewModel, LinksPanel, RatingTabControl);
             contentSystem.Start();
             

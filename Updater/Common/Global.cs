@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
 
 namespace Updater.Common
 {
@@ -24,11 +23,6 @@ namespace Updater.Common
         /// </summary>
         public static string ClientPath => Path.GetDirectoryName(ExecutableLocation);
 
-        public static bool TryConnect()
-        {
-
-            return false;
-        }
 
         private static readonly string[] SiteUrls =
         {
@@ -44,31 +38,29 @@ namespace Updater.Common
         {
             get
             {
-                if (string.IsNullOrEmpty(_siteUrl))
-                {
-                    foreach (string url in SiteUrls)
-                    {
-                        try
-                        {
-                            new WebClient().OpenRead(url);
-                            // Success
-                            _siteUrl = url;
-                            return url;
-                        }
-                        catch
-                        {
-                            // ignored
-                        }
+                return SiteUrls.First();
+                //if (string.IsNullOrEmpty(_siteUrl))
+                //{
+                //    foreach (string url in SiteUrls)
+                //    {
+                //        try
+                //        {
+                //            new WebClient().OpenRead(url);
+                //            // Success
+                //            _siteUrl = url;
+                //            return url;
+                //        }
+                //        catch
+                //        {
+                //            // ignored
+                //        }
+                //    }
+                //}
 
-                        new WebClient().OpenRead(SiteUrl);
-                    }
-                }
-
-                _siteUrl = SiteUrls.First();
-                return _siteUrl;
+                //_siteUrl = SiteUrls.First();
+                //return _siteUrl;
             }
         }
-
         private static string _siteUrl;
 
         
