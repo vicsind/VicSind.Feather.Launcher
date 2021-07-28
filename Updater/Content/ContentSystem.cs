@@ -1,12 +1,16 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Shapes;
 using System.Windows.Threading;
 using Updater.ViewModels;
+using Color = System.Windows.Media.Color;
+using ColorConverter = System.Windows.Media.ColorConverter;
 
 namespace Updater.Content
 {
@@ -45,6 +49,9 @@ namespace Updater.Content
                 SetMenu(menu);
                 //var ratings = await UpdaterContent.LoadRatings();
                 //SetRatings(ratings);
+
+                await UpdateFactionBalance();
+                await CheckServerStatus();
             }
             catch
             {
@@ -55,7 +62,7 @@ namespace Updater.Content
         /// <summary>
         /// Получить ссылки меню.
         /// </summary>
-        private void SetMenu(IEnumerable<MenuItem> menu)
+        private void SetMenu(List<MenuItem> menu)
         {
             try
             {
@@ -69,8 +76,15 @@ namespace Updater.Content
                         if (color is Color foreground)
                             label.Foreground = new SolidColorBrush(foreground);
                     }
-
                     LinksPanel.Children.Add(label);
+
+                    if (link != menu.Last())
+                    {
+                        Rectangle rectangle = new Rectangle
+                            { Height = 6, Width = 6, Fill = new SolidColorBrush(Color.FromRgb(204, 0, 0)) };
+                        rectangle.LayoutTransform = new RotateTransform(45);
+                        LinksPanel.Children.Add(rectangle);
+                    }
                 }
             }
             catch

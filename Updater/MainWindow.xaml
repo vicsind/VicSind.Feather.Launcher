@@ -29,11 +29,8 @@
             </Style>
             <resources:CaseConverter x:Key="CaseConverter" />
         </ResourceDictionary>
-
     </Window.Resources>
-    <!--<Window.Background>
-        <ImageBrush ImageSource="Images/BG.png" Stretch="Uniform" AlignmentY="Bottom"></ImageBrush>
-    </Window.Background>-->
+
     <Grid Background="Transparent">
             <Grid ZIndex="1">
                 <Image Source="Images/Title.png" Width="588" VerticalAlignment="Top"
@@ -54,12 +51,14 @@
                 <!--#region Small menu-->
                 <Border Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="#303337" >
                     <Grid Background="Black">
+
                         <!--#region Links-->
                         <StackPanel Orientation="Horizontal" Margin="15,0">
                             <StackPanel.Resources>
                                 <Style TargetType="Label">
                                     <Setter Property="Margin" Value="11,0"></Setter>
                                     <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                    <Setter Property="FontSize" Value="12"></Setter>
                                     <Setter Property="FontFamily" Value="Fonts/#BeaufortforLOL-Regular"></Setter>
                                     <Setter Property="Foreground" Value="#afaba5"></Setter>
                                     <Setter Property="Cursor" Value="Hand"></Setter>
@@ -78,10 +77,10 @@
                         <StackPanel Orientation="Horizontal" Margin="15,0"
                             VerticalAlignment="Center" HorizontalAlignment="Right">
                             <Label Content="SERVER ONLINE" Foreground="#FF64B358" FontSize="12" 
-                               FontFamily="Fonts/#BeaufortforLOL-Regular" Visibility="{Binding ServerOnlineVisibility}"
+                               FontFamily="Fonts/#Proxima Nova Rg" Visibility="{Binding ServerOnlineVisibility}"
                                HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
                             <Label Content="SERVER OFFLINE" Foreground="#FFB35858" FontSize="12" 
-                               FontFamily="Fonts/#BeaufortforLOL-Regular" Visibility="{Binding ServerOfflineVisibility}"
+                               FontFamily="Fonts/#Proxima Nova Rg" Visibility="{Binding ServerOfflineVisibility}"
                                HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
 
                             <!--#region CloseButton-->
@@ -119,7 +118,8 @@
                                 <Style TargetType="Label">
                                     <Setter Property="Margin" Value="20,0"></Setter>
                                     <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                    <Setter Property="FontFamily" Value="Fonts/#BeaufortforLOL-Regular"></Setter>
+                                    <Setter Property="FontSize" Value="12"></Setter>
+                                    <Setter Property="FontFamily" Value="/Updater;component/Fonts/#Proxima Nova Rg"></Setter>
                                     <Setter Property="Foreground" Value="White"></Setter>
                                     <Setter Property="Cursor" Value="Hand"></Setter>
                                     <EventSetter Event="MouseLeftButtonDown" Handler="Link_OnClick"></EventSetter>
@@ -144,13 +144,17 @@
 
                     <!--#region Left column-->
                     <Grid Grid.Column="0" Background="#D813141a" Margin="10,0, 0, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
                         <StackPanel Margin="0,0,0,1" Width="280"
                                     HorizontalAlignment="Center">
                             <Border BorderThickness="0,0,0,2" BorderBrush="#cc0000" 
                                     Margin="10,7,15,0">
                                 <Label Content="ACTUAL EVENTS"
                                        FontSize="20" Foreground="White" 
-                                       FontFamily="Fonts/#BeaufortforLOL-Regular"></Label>
+                                       FontFamily="/Updater;component/Fonts/#Futura PT Medium"></Label>
                             </Border>
                             <!--#region Banners-->
                             <ListView x:Name="BannersListView" Focusable="False" 
@@ -265,6 +269,36 @@
                                 </Grid>
                             </Border>
                         </StackPanel>
+
+                        <!--#region Faction Balance-->
+                        <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                               Margin="10,5">
+                            <Border Height="24" BorderThickness="1" BorderBrush="#3F888888">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="{Binding AoL}"></ColumnDefinition>
+                                        <ColumnDefinition Width="{Binding UoF}"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0" ToolTip="Alliance of Light" 
+                                              Background="#014CCC">
+                                        <Label Foreground="White" FontSize="11" 
+                                                   FontFamily="Fonts/#Futura PT Book"
+                                                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                                                   Content="{Binding Path=BalanceAoL}" ContentStringFormat="P1">
+                                        </Label>
+                                    </Grid>
+                                    <Grid Grid.Column="1" ToolTip="Union of Fury"
+                                          Background="#AA211C">
+                                        <Label Foreground="White" FontSize="11" 
+                                                   FontFamily="Fonts/#Futura PT Book" 
+                                                   HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                   Content="{Binding BalanceUoF}" ContentStringFormat="P1">
+                                        </Label>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <!--#endregion -->
                     </Grid>
                     <!--#endregion-->
 
@@ -276,8 +310,8 @@
                         </Grid.RowDefinitions>
                         <Border BorderThickness="0,0,0,2" BorderBrush="#cc0000" Margin="10,7,15,0">
                             <Label Content="SERVER NEWS"
-                                   FontSize="20" Foreground="White" 
-                                   FontFamily="Fonts/#BeaufortforLOL-Regular"></Label>
+                                   FontSize="20" Foreground="White"
+                                   FontFamily="/Updater;component/Fonts/#Futura PT Medium"></Label>
                         </Border>
                         <ListView x:Name="NewsListView" Grid.Row="1" Focusable="False"
                                   HorizontalContentAlignment="Stretch" 
@@ -296,10 +330,10 @@
                                             <Style TargetType="Border">
                                                 <Style.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="BorderBrush" Value="#7F303337" />
+                                                        <Setter Property="BorderBrush" Value="#3F888888" />
                                                     </Trigger>
                                                     <Trigger Property="IsMouseOver" Value="False">
-                                                        <Setter Property="BorderBrush" Value="#FF131717" />
+                                                        <Setter Property="BorderBrush" Value="#3F564b35" />
                                                     </Trigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -322,22 +356,33 @@
                                                         <ColumnDefinition Width="200"></ColumnDefinition>
                                                     </Grid.ColumnDefinitions>
                                                     <StackPanel Orientation="Horizontal">
+                                                        <Rectangle Height="8" Width="8" Fill="#FFCC0000" RenderTransformOrigin="0.5,0.5">
+                                                            <Rectangle.RenderTransform>
+                                                                <TransformGroup>
+                                                                    <ScaleTransform/>
+                                                                    <SkewTransform/>
+                                                                    <RotateTransform Angle="45"/>
+                                                                    <TranslateTransform/>
+                                                                </TransformGroup>
+                                                            </Rectangle.RenderTransform>
+
+                                                        </Rectangle>
                                                         <!--<Image Source="Images/circle.png" Height="13" VerticalAlignment="Center"></Image>-->
                                                         <TextBlock Text="{Binding Title, Converter={StaticResource CaseConverter}}"
                                                                    VerticalAlignment="Center" 
-                                                           FontSize="15" Foreground="#FFB89B6F" FontFamily="Fonts/#BeaufortforLOL-Regular"
-                                                           Margin="0,0">
+                                                           FontSize="16" Foreground="#FFB89B6F" FontFamily="Fonts/#Futura PT Medium"
+                                                           Margin="10,0">
                                                         </TextBlock>
                                                     </StackPanel>
                                                     <TextBlock Grid.Column="1" Text="{Binding DateLabel}" VerticalAlignment="Center" Margin="0"
-                                                       FontSize="14" Foreground="#FF807C77" FontFamily="Fonts/#BeaufortforLOL-Regular"
+                                                       FontSize="14" Foreground="#FF807C77" FontFamily="Fonts/#Futura PT Book"
                                                        HorizontalAlignment="Right">
                                                     </TextBlock>
                                                 </Grid>
                                                 <!-- Desc -->
                                                 <TextBlock Text="{Binding Desc}" 
                                                        HorizontalAlignment="Left" Margin="0,3,0,3"
-                                                       FontSize="13" Foreground="White" 
+                                                       FontSize="13" Foreground="White" FontFamily="Fonts/#Proxima Nova Rg"
                                                        TextWrapping="Wrap" TextAlignment="Left" 
                                                        LineStackingStrategy="BlockLineHeight" LineHeight="22">
                                                 </TextBlock>
@@ -363,7 +408,7 @@
                                                             </Style>
                                                         </Grid.Style>
                                                         <Label HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                                               FontFamily="Fonts/#BeaufortforLOL-Regular" FontSize="12" 
+                                                               FontFamily="Fonts/#Proxima Nova Rg" FontSize="12" 
                                                                Foreground="#FFE23131" Content="{Binding Button}"></Label>
                                                     </Grid>
                                                 </Grid>
@@ -396,8 +441,8 @@
                             <Grid.Resources>
                                 <Style TargetType="Label">
                                     <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
-                                    <Setter Property="Foreground" Value="#b19f90"></Setter>
-                                    <Setter Property="FontFamily" Value="Fonts/#BeaufortforLOL-Regular"></Setter>
+                                    <Setter Property="Foreground" Value="White"></Setter>
+                                    <Setter Property="FontFamily" Value="Fonts/#Proxima Nova Rg"></Setter>
                                     <Setter Property="FontSize" Value="13"></Setter>
                                     <Setter Property="Effect">
                                         <Setter.Value>
@@ -424,10 +469,10 @@
                             <!-- Progress Light-->
                             <Border Grid.Column="0" VerticalAlignment="Top" 
                                     Margin="0,13" Height="16" Width="770"
-                                BorderThickness="1" BorderBrush="#FF473A23">
-                                <Border BorderThickness="1" BorderBrush="White">
-                                    <Grid VerticalAlignment="Center" HorizontalAlignment="Left"
-                                      Background="#FFFB3636" Width="{Binding ProgressLight}" Height="12"
+                                BorderThickness="1" BorderBrush="#3F473A23">
+                                <Border BorderThickness="1" BorderBrush="#303337">
+                                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Left"
+                                      Background="#FFFB3636" Width="{Binding ProgressLight}" 
                                       Canvas.ZIndex="1">
                                     </Grid>
                                 </Border>
@@ -435,10 +480,10 @@
                             <!-- Progress Dark-->
                             <Border Grid.Column="0" VerticalAlignment="Bottom" Width="770" 
                                     Margin="0,13" Height="16"
-                                BorderThickness="1" BorderBrush="#FF473A23">
-                                <Border BorderThickness="1" BorderBrush="White">
-                                    <Grid VerticalAlignment="Center" HorizontalAlignment="Left"
-                                      Background="#FFA80000" Width="{Binding ProgressDark}" Height="12"
+                                BorderThickness="1" BorderBrush="#3F473A23">
+                                <Border BorderThickness="1" BorderBrush="#303337">
+                                    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Left"
+                                      Background="#AA211C" Width="{Binding ProgressDark}" 
                                       Canvas.ZIndex="1">
                                     </Grid>
                                 </Border>
@@ -456,7 +501,7 @@
                                         <Border Name="border"  BorderThickness="2,1,2,1" 
                                                 BorderBrush="#FF323435">
                                             <Grid Name="grid" Background="#FF1D1F20">
-                                                <Label Name="label" FontFamily="Fonts/#BeaufortforLOL-Regular"
+                                                <Label Name="label" FontFamily="Fonts/#Proxima Nova Rg"
                                                        Foreground="White" FontSize="16"
                                                        HorizontalAlignment="Center" VerticalAlignment="Center">START GAME</Label>
                                             </Grid>

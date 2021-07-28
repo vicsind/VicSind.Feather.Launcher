@@ -43,7 +43,14 @@ namespace Updater
         
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            DragMove();
+            try
+            {
+                DragMove();
+            }
+            catch
+            {
+                // ignored
+            }
         }
 
         private void HideButton_OnClickButton_Click(object sender, RoutedEventArgs e)

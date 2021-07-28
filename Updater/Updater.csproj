@@ -124,14 +124,11 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.manifest" />
-    <Resource Include="Fonts\AGKorneliaC.otf" />
-    <Resource Include="Fonts\AlgerianTygra.ttf" />
     <Resource Include="Fonts\Beaufort-Bold.ttf" />
     <Resource Include="Fonts\Beaufort-Regular.ttf" />
-    <Resource Include="Fonts\ExyleC.otf" />
-    <Resource Include="Fonts\KorinaLightTYGRA.ttf" />
-    <Resource Include="Fonts\OldKingC.otf" />
-    <Resource Include="Fonts\Riven.TTF" />
+    <Resource Include="Fonts\FuturaPT-Book.ttf" />
+    <Resource Include="Fonts\ProximaNova-Regular.ttf" />
+    <Resource Include="Fonts\FuturaPT-Medium.ttf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
