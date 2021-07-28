@@ -80,13 +80,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Common\Global.cs" />
+    <Compile Include="Content\ActualEvent.cs" />
     <Compile Include="Content\Banner.cs" />
     <Compile Include="Content\ContentSystem.cs" />
     <Compile Include="Content\MenuItem.cs" />
     <Compile Include="Content\NewsItem.cs" />
-    <Compile Include="Content\Rating.cs" />
-    <Compile Include="Content\RatingItem.cs" />
-    <Compile Include="Content\TopKiller.cs" />
     <Compile Include="Content\UpdaterContent.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
     <Compile Include="Helper.cs" />

@@ -145,6 +145,8 @@
                     <!--#region Left column-->
                     <Grid Grid.Column="0" Background="#D813141a" Margin="10,0, 0, 0">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
@@ -156,51 +158,6 @@
                                        FontSize="20" Foreground="White" 
                                        FontFamily="/Updater;component/Fonts/#Futura PT Medium"></Label>
                             </Border>
-                            <!--#region Banners-->
-                            <ListView x:Name="BannersListView" Focusable="False" 
-                                  HorizontalContentAlignment="Stretch" Visibility="Visible"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                                  ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                                  Background="Transparent" BorderThickness="0" 
-                                  HorizontalAlignment="Right" VerticalAlignment="Top"
-                                  ItemsSource="{Binding Banners}"
-                                  Margin="0,7,0,0">
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="{x:Type ListViewItem}">
-                                        <Setter Property="Background" Value="Transparent" />
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                                    <ContentPresenter />
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </ListView.ItemContainerStyle>
-                                <ListView.ItemTemplate>
-                                    <DataTemplate DataType="content:Banner">
-                                        <Border Margin="0,0,0,2" BorderThickness="1" VerticalAlignment="Top" Background="Transparent" >
-                                            <Border.Style>
-                                                <Style TargetType="Border">
-                                                    <Style.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter Property="BorderBrush" Value="#7F2E6FA4" />
-                                                        </Trigger>
-                                                        <Trigger Property="IsMouseOver" Value="False">
-                                                            <Setter Property="BorderBrush" Value="Transparent" />
-                                                        </Trigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Border.Style>
-                                            <Grid Background="Transparent" Cursor="Hand" Height="50" Margin="1" Width="280"
-                                          MouseLeftButtonDown="Link_OnClick" Tag="{Binding Link}">
-                                                <Image Source="{Binding Image}" Stretch="UniformToFill"></Image>
-                                            </Grid>
-                                        </Border>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                            <!--#endregion-->
 
                             <Border BorderBrush="#303337" BorderThickness="1" 
                                     Margin="0,5" Width="270">
@@ -219,60 +176,142 @@
                                             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"></Setter>
                                             <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"></Setter>
                                         </Style>
-                                        <Style TargetType="{x:Type Label}">
-                                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                                            <Setter Property="FontSize" Value="14"/>
-                                            <Setter Property="Foreground" Value="#b38c58"/>
-                                            <Setter Property="FontFamily" Value="Fonts/#AGKorneliaC"/>
-                                        </Style>
-                                        <!--#endregion-->
-                                        <!--#region ListView DataTemplate-->
-                                        <DataTemplate x:Key="RatingTemplate" DataType="content:RatingItem">
-                                            <Border Margin="0,2" BorderThickness="1" VerticalAlignment="Top" Background="Transparent" 
-                                            Width="270">
-                                                <Border.Style>
-                                                    <Style TargetType="Border">
-                                                        <Style.Triggers>
-                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                <Setter Property="BorderBrush" Value="#7F2E6FA4" />
-                                                            </Trigger>
-                                                            <Trigger Property="IsMouseOver" Value="False">
-                                                                <Setter Property="BorderBrush" Value="#FF131717" />
-                                                            </Trigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Border.Style>
-                                                <Grid Background="#E515161D">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30" />
-                                                        <ColumnDefinition Width="170" />
-                                                        <ColumnDefinition Width="70" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid.Resources>
-                                                        <Style TargetType="TextBlock">
-                                                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                                                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                                            <Setter Property="FontFamily" Value="Fonts/#BeaufortforLOL-Regular"></Setter>
-                                                            <Setter Property="Foreground" Value="#FFCBB9AA"></Setter>
-                                                            <Setter Property="FontSize" Value="14"></Setter>
-                                                            <Setter Property="Margin" Value="0,5"></Setter>
-                                                        </Style>
-                                                    </Grid.Resources>
-                                                    <TextBlock Text="{Binding Place, StringFormat={}{0}.}" ></TextBlock>
-                                                    <TextBlock Grid.Column="1" Text="{Binding Name}" ></TextBlock>
-                                                    <TextBlock Grid.Column="2" Text="{Binding Points, StringFormat=N0}"></TextBlock>
-                                                </Grid>
-                                            </Border>
-                                        </DataTemplate>
                                         <!--#endregion-->
                                     </Grid.Resources>
                                 </Grid>
                             </Border>
                         </StackPanel>
 
+
+                        <!--#region Banners-->
+                        <ListView Grid.Row="1" x:Name="BannersListView" Focusable="False" 
+                                  HorizontalContentAlignment="Stretch" Visibility="Visible"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                  Background="Transparent" BorderThickness="0" 
+                                  HorizontalAlignment="Right" VerticalAlignment="Top"
+                                  ItemsSource="{Binding Banners}"
+                                  Margin="0,7,0,0">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                <ContentPresenter />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate DataType="content:Banner">
+                                    <Border Margin="0,0,0,2" BorderThickness="1" VerticalAlignment="Top" Background="Transparent" >
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="BorderBrush" Value="#7F2E6FA4" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsMouseOver" Value="False">
+                                                        <Setter Property="BorderBrush" Value="Transparent" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <Grid Background="Transparent" Cursor="Hand" Height="50" Margin="1" Width="280"
+                                          MouseLeftButtonDown="Link_OnClick" Tag="{Binding Link}">
+                                            <Image Source="{Binding Image}" Stretch="UniformToFill"></Image>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <!--#endregion-->
+
+                        <Grid Grid.Row="2">
+                            <ListView Focusable="False"
+                                      HorizontalContentAlignment="Stretch" 
+                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                      ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                                      Background="Transparent" BorderThickness="0" 
+                                      HorizontalAlignment="Left" VerticalAlignment="Top"
+                                      ItemsSource="{Binding ActualEvents}"
+                                      Margin="0,5,0,0">
+                                <ListView.ItemTemplate>
+
+                                    <DataTemplate DataType="content:ActualEvent">
+                                        <Border Margin="0,2" BorderThickness="1" VerticalAlignment="Top" Background="Transparent" 
+                                            Width="278">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="BorderBrush" Value="#3F888888" />
+                                                        </Trigger>
+                                                        <Trigger Property="IsMouseOver" Value="False">
+                                                            <Setter Property="BorderBrush" Value="#3F564b35" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <Grid Background="#BF131417" Height="55">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="30" />
+                                                    <ColumnDefinition Width="40" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="30" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.Resources>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                                        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                                        <Setter Property="FontFamily" Value="Fonts/#Proxima Nova Rg"></Setter>
+                                                        <Setter Property="Foreground" Value="#FFCBB9AA"></Setter>
+                                                        <Setter Property="Margin" Value="0,5"></Setter>
+                                                    </Style>
+                                                </Grid.Resources>
+
+                                                <Rectangle Grid.Column="0" Height="7" Width="7" 
+                                                           Fill="#FFCC0000" HorizontalAlignment="Center"
+                                                           RenderTransformOrigin="0.5,0.5">
+                                                    <Rectangle.RenderTransform>
+                                                        <TransformGroup>
+                                                            <RotateTransform Angle="45"/>
+                                                        </TransformGroup>
+                                                    </Rectangle.RenderTransform>
+                                                </Rectangle>
+
+                                                <Grid Grid.Column="1">
+                                                    <TextBlock Text="{Binding StartTime, StringFormat=hh\\:mm}" 
+                                                               HorizontalAlignment="Center" Foreground="#ffdc73" FontSize="13"></TextBlock>
+                                                </Grid>
+                                                <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding Name, Converter={StaticResource CaseConverter}}" 
+                                                               Foreground="#ffc107" FontSize="14" Margin="0"></TextBlock>
+                                                    <TextBlock Text="{Binding Map, Converter={StaticResource CaseConverter}}" 
+                                                               Foreground="#5cb85c" FontSize="10" Margin="0,5,0,0"></TextBlock>
+                                                </StackPanel>
+
+                                                <Rectangle Grid.Column="3" Height="7" Width="7" 
+                                                           Fill="#FFCC0000" HorizontalAlignment="Center"
+                                                           RenderTransformOrigin="0.5,0.5">
+                                                    <Rectangle.RenderTransform>
+                                                        <TransformGroup>
+                                                            <RotateTransform Angle="45"/>
+                                                        </TransformGroup>
+                                                    </Rectangle.RenderTransform>
+                                                </Rectangle>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+
                         <!--#region Faction Balance-->
-                        <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
-                               Margin="10,5">
+                        <Grid Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                               Margin="5,5">
                             <Border Height="24" BorderThickness="1" BorderBrush="#3F888888">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -359,13 +398,9 @@
                                                         <Rectangle Height="8" Width="8" Fill="#FFCC0000" RenderTransformOrigin="0.5,0.5">
                                                             <Rectangle.RenderTransform>
                                                                 <TransformGroup>
-                                                                    <ScaleTransform/>
-                                                                    <SkewTransform/>
                                                                     <RotateTransform Angle="45"/>
-                                                                    <TranslateTransform/>
                                                                 </TransformGroup>
                                                             </Rectangle.RenderTransform>
-
                                                         </Rectangle>
                                                         <!--<Image Source="Images/circle.png" Height="13" VerticalAlignment="Center"></Image>-->
                                                         <TextBlock Text="{Binding Title, Converter={StaticResource CaseConverter}}"

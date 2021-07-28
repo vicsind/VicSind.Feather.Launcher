@@ -73,16 +73,16 @@ namespace Updater.Content
         /// <summary>
         /// Загрузить данные об актуальных ивентах.
         /// </summary>
-        public static async Task<List<Rating>> LoadEvents()
+        public static async Task<List<ActualEvent>> LoadEvents()
         {
             try
             {
-                string jsonString = await LoadContentFromUrlAsync(RatingsUrl);
-                return JsonConvert.DeserializeObject<List<Rating>>(jsonString);
+                string jsonString = await LoadContentFromUrlAsync(ActualEventsUrl);
+                return JsonConvert.DeserializeObject<List<ActualEvent>>(jsonString);
             }
             catch
             {
-                return new List<Rating>();
+                return new List<ActualEvent>();
             }
         }
 
@@ -104,7 +104,7 @@ namespace Updater.Content
         /// <summary>
         /// Путь к данным о рейтингах.
         /// </summary>
-        public static string RatingsUrl => Global.SiteUrl + "ratings";
+        public static string ActualEventsUrl => Global.SiteUrl + "actual-events";
 
         /// <summary>
         /// Путь к данным о баннерах.

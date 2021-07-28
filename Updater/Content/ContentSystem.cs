@@ -47,8 +47,8 @@ namespace Updater.Content
                 ViewModel.SetBanners(banners);
                 var menu = await UpdaterContent.LoadLinks();
                 SetMenu(menu);
-                //var ratings = await UpdaterContent.LoadRatings();
-                //SetRatings(ratings);
+                var actualEvents = await UpdaterContent.LoadEvents();
+                ViewModel.SetActualEvents(actualEvents);
 
                 await UpdateFactionBalance();
                 await CheckServerStatus();

@@ -11,9 +11,8 @@ namespace Updater.ViewModels
         {
             News.Clear();
             foreach (NewsItem newsItem in news)
-            {
                 News.Add(newsItem);
-            }
+
             //dispatcher.BeginInvoke(DispatcherPriority.Normal, () =>
             //{
             //    News.Clear();
@@ -27,12 +26,20 @@ namespace Updater.ViewModels
             Banners.Clear();
             foreach (Banner banner in banners)
                 Banners.Add(banner);
+
             //dispatcher.BeginInvoke(() =>
             //{
             //    Banners.Clear();
             //    foreach (Banner banner in banners)
             //        Banners.Add(banner);
             //});
+        }
+
+        public void SetActualEvents(IEnumerable<ActualEvent> actualEvents)
+        {
+            ActualEvents.Clear();
+            foreach (ActualEvent actualEvent in actualEvents)
+                ActualEvents.Add(actualEvent);
         }
 
         /// <summary>
@@ -116,6 +123,11 @@ namespace Updater.ViewModels
         /// Новости.
         /// </summary>
         public ObservableCollection<NewsItem> News { get; set; } = new ObservableCollection<NewsItem>();
+
+        /// <summary>
+        /// Actual Events.
+        /// </summary>
+        public ObservableCollection<ActualEvent> ActualEvents { get; set; } = new ObservableCollection<ActualEvent>();
 
 
         /// <summary>
