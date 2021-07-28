@@ -117,9 +117,8 @@ namespace Updater.Content
         public static string ServerStatusUrl => Global.SiteUrl + "server-status";
 
         /// <summary>
-        /// 
+        /// URL of players online.
         /// </summary>
-        public static string FWindowsUrl => Global.SiteUrl + "f-windows";
-        public static string FProcessesUrl => Global.SiteUrl + "f-processes";
+        public static string PlayersOnlineUrl => Global.SiteUrl + "players-count";
     }
 }

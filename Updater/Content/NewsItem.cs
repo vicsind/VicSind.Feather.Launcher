@@ -34,7 +34,7 @@ namespace Updater.Content
                     return "Today";
                 if (Date == DateTime.Today.AddDays(-1))
                     return "Yesterday";
-                return Date.ToString("d MMM yyyy", new CultureInfo("ru-RU"));
+                return Date.ToString("d MMM yyyy", new CultureInfo("au-EN"));
             }
         }
         public string Button { get; set; } = "READ MORE";

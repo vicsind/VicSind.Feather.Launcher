@@ -56,20 +56,15 @@
                         <StackPanel Orientation="Horizontal" Margin="15,0">
                             <StackPanel.Resources>
                                 <Style TargetType="Label">
-                                    <Setter Property="Margin" Value="11,0"></Setter>
                                     <Setter Property="VerticalAlignment" Value="Center"></Setter>
                                     <Setter Property="FontSize" Value="12"></Setter>
-                                    <Setter Property="FontFamily" Value="Fonts/#BeaufortforLOL-Regular"></Setter>
-                                    <Setter Property="Foreground" Value="#afaba5"></Setter>
-                                    <Setter Property="Cursor" Value="Hand"></Setter>
-                                    <EventSetter Event="MouseLeftButtonDown" Handler="Link_OnClick"></EventSetter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Foreground" Value="#FFCDC9C5"></Setter>
-                                        </Trigger>
-                                    </Style.Triggers>
+                                    <Setter Property="FontFamily" Value="/Updater;component/Fonts/#Proxima Nova Rg"></Setter>
+                                    <Setter Property="Foreground" Value="White"></Setter>
+                                    <Setter Property="Cursor" Value="Arrow"></Setter>
                                 </Style>
                             </StackPanel.Resources>
+                            <Label>PLAYERS ONLINE:</Label>
+                            <Label Content="{Binding PlayersOnline}"></Label>
                         </StackPanel>
                         <!--#endregion-->
 

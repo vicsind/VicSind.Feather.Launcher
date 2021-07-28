@@ -33,8 +33,9 @@ namespace Updater.Content
 
         private void TimerOnTick(object sender, EventArgs e)
         {
-            CheckServerStatus();
+            UpdatePlayersOnline();
             UpdateFactionBalance();
+            CheckServerStatus();
         }
 
         private async Task LoadContent()
@@ -50,6 +51,7 @@ namespace Updater.Content
                 var actualEvents = await UpdaterContent.LoadEvents();
                 ViewModel.SetActualEvents(actualEvents);
 
+                await UpdatePlayersOnline();
                 await UpdateFactionBalance();
                 await CheckServerStatus();
             }
@@ -111,6 +113,26 @@ namespace Updater.Content
             catch
             {
                 // ignored
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private async Task UpdatePlayersOnline()
+        {
+            try
+            {
+                string jsonString = await UpdaterContent.LoadContentFromUrlAsync(UpdaterContent.PlayersOnlineUrl);
+                if (jsonString == "")
+                    return;
+
+                int playersCount = Convert.ToInt32(jsonString);
+                ViewModel.PlayersOnline = playersCount;
+            }
+            catch
+            {
+                ViewModel.PlayersOnline = 0;
             }
         }
 

@@ -235,5 +235,19 @@ namespace Updater.ViewModels
             }
         }
         private bool _IsStartGameEnabled = true;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public double PlayersOnline
+        {
+            get => _playersOnline;
+            set
+            {
+                _playersOnline = value;
+                RaisePropertyChanged(nameof(PlayersOnline));
+            }
+        }
+        private double _playersOnline;
     }
 }
