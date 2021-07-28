@@ -71,9 +71,9 @@ namespace Updater.Content
 
 
         /// <summary>
-        /// Загрузить данные о рейтинге.
+        /// Загрузить данные об актуальных ивентах.
         /// </summary>
-        public static async Task<List<Rating>> LoadRatings()
+        public static async Task<List<Rating>> LoadEvents()
         {
             try
             {

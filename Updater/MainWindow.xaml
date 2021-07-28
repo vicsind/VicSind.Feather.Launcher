@@ -13,8 +13,8 @@
         HorizontalAlignment="Center" VerticalAlignment="Center" 
         ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.IsSharedSizeScope="True" 
         Icon="icon.ico" Loaded="MainWindow_OnLoaded" 
-        Height="640" Width="1095" MinHeight="640" MinWidth="1095" 
-        BorderThickness="1" BorderBrush="Black" >
+        Height="640" Width="1095" MinHeight="640" MinWidth="1105" 
+        BorderThickness="1" Background="Transparent">
     <Window.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type ListViewItem}">
@@ -34,63 +34,28 @@
     <!--<Window.Background>
         <ImageBrush ImageSource="Images/BG.png" Stretch="Uniform" AlignmentY="Bottom"></ImageBrush>
     </Window.Background>-->
-    <Border BorderThickness="1" BorderBrush="#303337">
-
-        <Grid Background="#0a0a0a">
-            <Grid Height="635" Width="1095" VerticalAlignment="Bottom">
+    <Grid Background="Transparent">
+            <Grid ZIndex="1">
+                <Image Source="Images/Title.png" Width="588" VerticalAlignment="Top"
+                       MouseLeftButtonDown="Window_MouseLeftButtonDown"></Image>
+        </Grid>
+        <Border Height="621" BorderThickness="1" BorderBrush="#303337" VerticalAlignment="Bottom">
+            <Grid Height="620" Width="1105" ZIndex="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="43"></RowDefinition>
                     <RowDefinition Height="34"></RowDefinition>
+                    <RowDefinition Height="45"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="108"></RowDefinition>
                 </Grid.RowDefinitions>
+                <Grid.Background>
+                    <ImageBrush ImageSource="Images/content-bg.jpg" Stretch="UniformToFill"></ImageBrush>
+                </Grid.Background>
 
-                <!--#region Header-->
-                <Border Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="Black" MouseLeftButtonDown="Window_MouseLeftButtonDown" >
-                    <Grid Background="#111216">
-                        <Image Source="Images/header-corner.png" HorizontalAlignment="Right" Stretch="Uniform"></Image>
-                        <Image Source="Images/header-corner.png" HorizontalAlignment="Left" Stretch="Uniform" RenderTransformOrigin="0.5,0.5">
-                            <Image.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform ScaleY="1" ScaleX="-1"/>
-                                    <SkewTransform AngleY="0" AngleX="0"/>
-                                    <RotateTransform Angle="0"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Image.RenderTransform>
-                        </Image>
-                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFB48E59" FontFamily="Fonts/#ExyleC" FontSize="32">NEMESIS</Label>
-                        <StackPanel Orientation="Horizontal" Margin="5,0" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                            <!--#region CloseButton-->
-                            <Button Content="" x:Name="CloseButton" Width="40" Height="40" IsCancel="True" BorderThickness="0" Cursor="Hand" 
-                                Click="HideButton_OnClickButton_Click" >
-                                <Button.Template>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Label x:Name="CloseLabel" Content="×"
-                                           Width="40" HorizontalContentAlignment="Center" 
-                                           FontSize="28" FontFamily="Arial"></Label>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="False">
-                                                <Setter TargetName="CloseLabel" Property="Foreground" Value="LightGray" />
-                                            </Trigger>
-                                            <Trigger Property="IsMouseOver" Value="true">
-                                                <Setter TargetName="CloseLabel" Property="Foreground" Value="White" />
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Button.Template>
-                            </Button>
-                            <!--#endregion-->
-                        </StackPanel>
-                    </Grid>
-                </Border>
-                <!--#endregion-->
-
-                <!--#region SubMenu-->
-                <Border Grid.Row="1" BorderThickness="0,1,0,1" BorderBrush="#303337" >
-                    <Grid Background="#13141a">
+                <!--#region Small menu-->
+                <Border Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="#303337" >
+                    <Grid Background="Black">
                         <!--#region Links-->
-                        <StackPanel Orientation="Horizontal" Margin="15,0" x:Name="LinksPanel">
+                        <StackPanel Orientation="Horizontal" Margin="15,0">
                             <StackPanel.Resources>
                                 <Style TargetType="Label">
                                     <Setter Property="Margin" Value="11,0"></Setter>
@@ -113,199 +78,130 @@
                         <StackPanel Orientation="Horizontal" Margin="15,0"
                             VerticalAlignment="Center" HorizontalAlignment="Right">
                             <Label Content="SERVER ONLINE" Foreground="#FF64B358" FontSize="12" 
-                           FontFamily="Fonts/#BeaufortforLOL-Regular" Visibility="{Binding ServerOnlineVisibility}"
-                           HorizontalAlignment="Center"></Label>
+                               FontFamily="Fonts/#BeaufortforLOL-Regular" Visibility="{Binding ServerOnlineVisibility}"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
                             <Label Content="SERVER OFFLINE" Foreground="#FFB35858" FontSize="12" 
-                           FontFamily="Fonts/#BeaufortforLOL-Regular" Visibility="{Binding ServerOfflineVisibility}"
-                           HorizontalAlignment="Center"></Label>
+                               FontFamily="Fonts/#BeaufortforLOL-Regular" Visibility="{Binding ServerOfflineVisibility}"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+
+                            <!--#region CloseButton-->
+                            <Button Content="" x:Name="CloseButton" Width="30" Height="30" IsCancel="True" BorderThickness="0" Cursor="Hand" 
+                                    Click="HideButton_OnClickButton_Click" Margin="10,0,0,0">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Label x:Name="CloseLabel" Content="×"
+                                               Width="25" HorizontalContentAlignment="Center"
+                                               FontSize="17" FontFamily="Arial"></Label>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="False">
+                                                <Setter TargetName="CloseLabel" Property="Foreground" Value="LightGray" />
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="CloseLabel" Property="Foreground" Value="White" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <!--#endregion-->
                         </StackPanel>
                         <!--#endregion-->
                     </Grid>
                 </Border>
                 <!--#endregion-->
 
+                <!--#region Header-->
+                <Border Grid.Row="1" BorderThickness="0,1,0,1" BorderBrush="Black" MouseLeftButtonDown="Window_MouseLeftButtonDown" >
+                    <Grid Background="#D8000000">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                    Margin="15,0" x:Name="LinksPanel">
+                            <StackPanel.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="Margin" Value="20,0"></Setter>
+                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                    <Setter Property="FontFamily" Value="Fonts/#BeaufortforLOL-Regular"></Setter>
+                                    <Setter Property="Foreground" Value="White"></Setter>
+                                    <Setter Property="Cursor" Value="Hand"></Setter>
+                                    <EventSetter Event="MouseLeftButtonDown" Handler="Link_OnClick"></EventSetter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="#FFCDC9C5"></Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </StackPanel.Resources>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <!--#endregion-->
+
                 <!--#region Content-->
                 <Grid Grid.Row="2">
-                    <Grid.Background>
-                        <ImageBrush ImageSource="Images/content-bg.jpg" Stretch="UniformToFill"></ImageBrush>
-                    </Grid.Background>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="290"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition Width="280"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <!--#region News-->
-                    <ListView x:Name="NewsListView" Focusable="False" HorizontalContentAlignment="Stretch" 
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                      ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                      Background="Transparent" BorderThickness="0" 
-                      HorizontalAlignment="Left" VerticalAlignment="Top"
-                      ItemsSource="{Binding News}"
-                      Margin="0,0,15,0">
-                        <ListView.ItemTemplate>
-                            <DataTemplate DataType="content:NewsItem">
-                                <Border Margin="10,7,15,0" BorderThickness="1" VerticalAlignment="Top" Background="Transparent" Width="750">
-                                    <Border.Style>
-                                        <Style TargetType="Border">
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="BorderBrush" Value="#7F303337" />
-                                                </Trigger>
-                                                <Trigger Property="IsMouseOver" Value="False">
-                                                    <Setter Property="BorderBrush" Value="#FF131717" />
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Border.Style>
-                                    <Grid Background="#D813141a">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="80" />
-                                            <ColumnDefinition />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid Grid.Column="0" Height="55" Width="55" VerticalAlignment="Top" HorizontalAlignment="Center" 
-                                          Margin="0,10,0,5">
-                                            <Image Source="{Binding Thumbnail}" Margin="5"></Image>
-                                        </Grid>
-                                        <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top" Margin="0,10,10,5">
-                                            <!-- Title -->
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition></ColumnDefinition>
-                                                    <ColumnDefinition Width="200"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Image Source="Images/circle.png" Height="13" VerticalAlignment="Center"></Image>
-                                                    <TextBlock Text="{Binding Title, Converter={StaticResource CaseConverter}}" VerticalAlignment="Center" 
-                                                           FontSize="15" Foreground="#FFB89B6F" FontFamily="Fonts/#BeaufortforLOL-Regular"
-                                                           Margin="10,0">
-                                                    </TextBlock>
-                                                </StackPanel>
-                                                <TextBlock Grid.Column="1" Text="{Binding DateLabel}" VerticalAlignment="Center" Margin="0"
-                                                       FontSize="14" Foreground="#FF807C77" FontFamily="Fonts/#BeaufortforLOL-Regular"
-                                                       HorizontalAlignment="Right">
-                                                </TextBlock>
-                                            </Grid>
-                                            <!-- Desc -->
-                                            <TextBlock Text="{Binding Desc}" 
-                                           HorizontalAlignment="Left" Margin="0,3,0,3"
-                                           FontSize="13" Foreground="#FFD6C9BD" 
-                                           TextWrapping="Wrap" TextAlignment="Left" LineStackingStrategy="BlockLineHeight" LineHeight="22">
-                                            <!--<TextBlock.Effect>
-                                                <DropShadowEffect ShadowDepth="1" BlurRadius="0" Color="#FF000000" RenderingBias="Performance" />
-                                            </TextBlock.Effect>-->
-                                            </TextBlock>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition></ColumnDefinition>
-                                                    <ColumnDefinition></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                                <Grid Grid.Column="1" Background="#2d3032" Width="85" Height="28" HorizontalAlignment="Right"
-                                                Margin="0,-15,0,5" Cursor="Hand" MouseLeftButtonDown="Link_OnClick" Tag="{Binding LinkUrl}"
-                                                Visibility="{Binding ButtonVisibility}">
-                                                    <Grid.Style>
-                                                        <Style TargetType="{x:Type Grid}">
-                                                            <Style.Triggers>
-                                                                <Trigger Property="IsMouseOver" Value="False">
-                                                                    <Setter Property="Opacity" Value="0.7"></Setter>
-                                                                </Trigger>
-                                                                <Trigger Property="IsMouseOver" Value="True">
-                                                                    <Setter Property="Opacity" Value="1"></Setter>
-                                                                </Trigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </Grid.Style>
-                                                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                                   FontFamily="Fonts/#BeaufortforLOL-Regular" FontSize="10" 
-                                                   Foreground="#aea69c" Content="{Binding Button}"></Label>
-                                                </Grid>
-                                            </Grid>
-                                        </StackPanel>
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                    <!--#endregion-->
-                    <StackPanel Grid.Column="1" Margin="-10,1,0,1" Width="280">
-                        <!--#region Banners-->
-                        <ListView x:Name="BannersListView" Focusable="False" HorizontalContentAlignment="Stretch" Visibility="Visible"
-                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                      ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                      Background="Transparent" BorderThickness="0" 
-                      HorizontalAlignment="Right" VerticalAlignment="Top"
-                      ItemsSource="{Binding Banners}"
-                      
-                      Margin="0,0,5,0">
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="{x:Type ListViewItem}">
-                                    <Setter Property="Background" Value="Transparent" />
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                                <ContentPresenter />
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.ItemTemplate>
-                                <DataTemplate DataType="content:Banner">
-                                    <Border Margin="0,0,0,2" BorderThickness="1" VerticalAlignment="Top" Background="Transparent" >
-                                        <Border.Style>
-                                            <Style TargetType="Border">
-                                                <Style.Triggers>
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="BorderBrush" Value="#7F2E6FA4" />
-                                                    </Trigger>
-                                                    <Trigger Property="IsMouseOver" Value="False">
-                                                        <Setter Property="BorderBrush" Value="Transparent" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </Border.Style>
-                                        <Grid Background="Transparent" Cursor="Hand" Height="50" Margin="1" Width="280"
-                                          MouseLeftButtonDown="Link_OnClick" Tag="{Binding Link}">
-                                            <Image Source="{Binding Image}" Stretch="UniformToFill"></Image>
-                                        </Grid>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <!--#endregion-->
-                        <Border BorderBrush="#303337" BorderThickness="1" Margin="0,5" Width="270">
-                            <Grid >
-                                <Grid.Resources>
-                                    <!--#region TabControl Style-->
-                                    <Style TargetType="TabControl">
+
+                    <!--#region Left column-->
+                    <Grid Grid.Column="0" Background="#D813141a" Margin="10,0, 0, 0">
+                        <StackPanel Margin="0,0,0,1" Width="280"
+                                    HorizontalAlignment="Center">
+                            <Border BorderThickness="0,0,0,2" BorderBrush="#cc0000" 
+                                    Margin="10,7,15,0">
+                                <Label Content="ACTUAL EVENTS"
+                                       FontSize="20" Foreground="White" 
+                                       FontFamily="Fonts/#BeaufortforLOL-Regular"></Label>
+                            </Border>
+                            <!--#region Banners-->
+                            <ListView x:Name="BannersListView" Focusable="False" 
+                                  HorizontalContentAlignment="Stretch" Visibility="Visible"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                  Background="Transparent" BorderThickness="0" 
+                                  HorizontalAlignment="Right" VerticalAlignment="Top"
+                                  ItemsSource="{Binding Banners}"
+                                  Margin="0,7,0,0">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListViewItem}">
+                                        <Setter Property="Background" Value="Transparent" />
                                         <Setter Property="Template">
                                             <Setter.Value>
-                                                <ControlTemplate TargetType="TabControl">
-                                                    <ContentPresenter x:Name="TabContent" Content="{TemplateBinding SelectedContent}"/>
-                                                    <ControlTemplate.Triggers>
-                                                        <EventTrigger RoutedEvent="Selector.SelectionChanged">
-                                                            <BeginStoryboard>
-                                                                <Storyboard>
-                                                                    <DoubleAnimation From="0" To="1"
-                                                                                 Storyboard.TargetProperty="Opacity"
-                                                                                 Storyboard.TargetName="TabContent"
-                                                                                 Duration="0:0:0.5" />
-                                                                </Storyboard>
-                                                            </BeginStoryboard>
-                                                        </EventTrigger>
-                                                    </ControlTemplate.Triggers>
+                                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                    <ContentPresenter />
                                                 </ControlTemplate>
                                             </Setter.Value>
                                         </Setter>
                                     </Style>
-                                    <!--#endregion-->
-                                </Grid.Resources>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate DataType="content:Banner">
+                                        <Border Margin="0,0,0,2" BorderThickness="1" VerticalAlignment="Top" Background="Transparent" >
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="BorderBrush" Value="#7F2E6FA4" />
+                                                        </Trigger>
+                                                        <Trigger Property="IsMouseOver" Value="False">
+                                                            <Setter Property="BorderBrush" Value="Transparent" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <Grid Background="Transparent" Cursor="Hand" Height="50" Margin="1" Width="280"
+                                          MouseLeftButtonDown="Link_OnClick" Tag="{Binding Link}">
+                                                <Image Source="{Binding Image}" Stretch="UniformToFill"></Image>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <!--#endregion-->
 
-                                <TabControl x:Name="RatingTabControl" Margin="0" Background="Transparent" BorderBrush="Transparent">
-                                    <TabControl.ItemContainerStyle>
-                                        <Style TargetType="{x:Type TabItem}">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
-                                        </Style>
-                                    </TabControl.ItemContainerStyle>
-                                    <TabControl.Resources>
+                            <Border BorderBrush="#303337" BorderThickness="1" 
+                                    Margin="0,5" Width="270">
+                                <Grid>
+                                    <Grid.Resources>
                                         <!--#region ListView Style-->
                                         <Style TargetType="ListView">
                                             <Setter Property="Focusable" Value="False"></Setter>
@@ -365,78 +261,127 @@
                                             </Border>
                                         </DataTemplate>
                                         <!--#endregion-->
-                                    </TabControl.Resources>
-                                </TabControl>
-                            </Grid>
-                        </Border>
-                    </StackPanel>
-
-                    <StackPanel Grid.Column="1" Margin="-10,1,0,1" Width="290" VerticalAlignment="Bottom">
-                        <!--#region Faction Balance-->
-                        <Grid VerticalAlignment="Center" Margin="5,0,5,0" Height="55">
-                            <StackPanel>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30"></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition Width="30"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Image Grid.Column="0" Source="Images/faction-light.png" Height="15"
-                                       HorizontalAlignment="Center"></Image>
-                                    <Label Grid.Column="1" Content="FACTION BALANCE" Foreground="#b38c58" FontSize="14" FontFamily="Fonts/#AGKorneliaC"
-                                       HorizontalAlignment="Center"></Label>
-                                    <Image Grid.Column="2" Source="Images/faction-dark.png" Height="15"
-                                       HorizontalAlignment="Center"></Image>
+                                    </Grid.Resources>
                                 </Grid>
-                                <Border BorderBrush="#FF7A5425" BorderThickness="0.5">
-                                    <Border Height="23" BorderThickness="1" BorderBrush="#916a3a">
-                                        <Grid>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!--#region Right column-->
+                    <Grid Grid.Column="1" Background="#D813141a" Margin="15,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="0,0,0,2" BorderBrush="#cc0000" Margin="10,7,15,0">
+                            <Label Content="SERVER NEWS"
+                                   FontSize="20" Foreground="White" 
+                                   FontFamily="Fonts/#BeaufortforLOL-Regular"></Label>
+                        </Border>
+                        <ListView x:Name="NewsListView" Grid.Row="1" Focusable="False"
+                                  HorizontalContentAlignment="Stretch" 
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                  Background="Transparent" BorderThickness="0" 
+                                  HorizontalAlignment="Left" VerticalAlignment="Top"
+                                  ItemsSource="{Binding News}"
+                                  Margin="0,5,0,0">
+                            <ListView.ItemTemplate>
+                                <DataTemplate DataType="content:NewsItem">
+                                    <Border Margin="10,7,15,0" BorderThickness="1" 
+                                            VerticalAlignment="Top" Background="Transparent" 
+                                            Width="720">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="BorderBrush" Value="#7F303337" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsMouseOver" Value="False">
+                                                        <Setter Property="BorderBrush" Value="#FF131717" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <Grid Background="#BF131417">
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="{Binding AoL}"></ColumnDefinition>
-                                                <ColumnDefinition Width="{Binding UoF}"></ColumnDefinition>
+                                                <ColumnDefinition Width="80" />
+                                                <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
-                                            <Grid Grid.Column="0" ToolTip="Alliance of Light">
-                                                <Grid.Background>
-                                                    <VisualBrush TileMode="Tile" >
-                                                        <VisualBrush.Visual>
-                                                            <Image Source="Images/faction-blue-fill.png"></Image>
-                                                        </VisualBrush.Visual>
-                                                    </VisualBrush>
-                                                </Grid.Background>
-                                                <Label Foreground="#b38c58" FontSize="11" 
-                                                   FontFamily="Fonts/#AGKorneliaC"
-                                                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                                                   Content="{Binding Path=BalanceAoL}" ContentStringFormat="P1">
-                                                </Label>
+                                            <Grid Grid.Column="0" Height="55" Width="55" 
+                                                  VerticalAlignment="Top" HorizontalAlignment="Center" 
+                                                    Margin="0,10,0,5">
+                                                <Image Source="{Binding Thumbnail}" Margin="5"></Image>
                                             </Grid>
-                                            <Grid Grid.Column="1" ToolTip="Union of Fury">
-                                                <Grid.Background>
-                                                    <VisualBrush TileMode="Tile" >
-                                                        <VisualBrush.Visual>
-                                                            <Image Source="Images/faction-red-fill.png"></Image>
-                                                        </VisualBrush.Visual>
-                                                    </VisualBrush>
-                                                </Grid.Background>
-                                                <Label Foreground="#b38c58" FontSize="11" 
-                                                   FontFamily="Fonts/#AGKorneliaC" 
-                                                   HorizontalAlignment="Right" VerticalAlignment="Center"
-                                                   Content="{Binding BalanceUoF}" ContentStringFormat="P1">
-                                                </Label>
-                                            </Grid>
+                                            <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top" Margin="0,10,10,5">
+                                                <!-- Title -->
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition Width="200"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <!--<Image Source="Images/circle.png" Height="13" VerticalAlignment="Center"></Image>-->
+                                                        <TextBlock Text="{Binding Title, Converter={StaticResource CaseConverter}}"
+                                                                   VerticalAlignment="Center" 
+                                                           FontSize="15" Foreground="#FFB89B6F" FontFamily="Fonts/#BeaufortforLOL-Regular"
+                                                           Margin="0,0">
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                    <TextBlock Grid.Column="1" Text="{Binding DateLabel}" VerticalAlignment="Center" Margin="0"
+                                                       FontSize="14" Foreground="#FF807C77" FontFamily="Fonts/#BeaufortforLOL-Regular"
+                                                       HorizontalAlignment="Right">
+                                                    </TextBlock>
+                                                </Grid>
+                                                <!-- Desc -->
+                                                <TextBlock Text="{Binding Desc}" 
+                                                       HorizontalAlignment="Left" Margin="0,3,0,3"
+                                                       FontSize="13" Foreground="White" 
+                                                       TextWrapping="Wrap" TextAlignment="Left" 
+                                                       LineStackingStrategy="BlockLineHeight" LineHeight="22">
+                                                </TextBlock>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Column="1" Width="85" Height="28" HorizontalAlignment="Right"
+                                                            Margin="0,-15,0,5" Cursor="Hand" MouseLeftButtonDown="Link_OnClick"
+                                                            Tag="{Binding LinkUrl}"
+                                                            Visibility="{Binding ButtonVisibility}">
+                                                        <Grid.Style>
+                                                            <Style TargetType="{x:Type Grid}">
+                                                                <Style.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="False">
+                                                                        <Setter Property="Opacity" Value="0.7"></Setter>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Opacity" Value="1"></Setter>
+                                                                    </Trigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Grid.Style>
+                                                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                                               FontFamily="Fonts/#BeaufortforLOL-Regular" FontSize="12" 
+                                                               Foreground="#FFE23131" Content="{Binding Button}"></Label>
+                                                    </Grid>
+                                                </Grid>
+                                            </StackPanel>
                                         </Grid>
                                     </Border>
-                                </Border>
-                            </StackPanel>
-                        </Grid>
-                        <!--#endregion -->
-                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                    <!--#endregion-->
 
                 </Grid>
                 <!--#endregion-->
 
                 <!--#region Bottom-->
                 <Border Grid.Row="3" BorderThickness="0,1,0,0" BorderBrush="#303337" >
-                    <Grid Background="#111216">
+                    <Grid Background="#F2141414">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"></RowDefinition>
                             <RowDefinition Height="4.5*"></RowDefinition>
@@ -472,74 +417,79 @@
                         <!--#region Progress and Start-->
                         <Grid Grid.Row="1" VerticalAlignment="Top" Height="70" Margin="20,0,10,0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="8*"></ColumnDefinition>
-                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                <ColumnDefinition Width="800"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <!--#region Progress Light-->
-                            <Border Grid.Column="0" VerticalAlignment="Top" Width="844" Margin="0,15" Height="14"
+
+                            <!-- Progress Light-->
+                            <Border Grid.Column="0" VerticalAlignment="Top" 
+                                    Margin="0,13" Height="16" Width="770"
                                 BorderThickness="1" BorderBrush="#FF473A23">
-                                <Border BorderThickness="1" BorderBrush="#FF907546">
+                                <Border BorderThickness="1" BorderBrush="White">
                                     <Grid VerticalAlignment="Center" HorizontalAlignment="Left"
-                                      Background="#FF1F70B0" Width="{Binding ProgressLight}" Height="10"
+                                      Background="#FFFB3636" Width="{Binding ProgressLight}" Height="12"
                                       Canvas.ZIndex="1">
                                     </Grid>
                                 </Border>
                             </Border>
-                            <!--#endregion -->
-                            <!--#region Progress Dark-->
-                            <Border Grid.Column="0" VerticalAlignment="Bottom" Width="844" Margin="0,15" Height="14"
+                            <!-- Progress Dark-->
+                            <Border Grid.Column="0" VerticalAlignment="Bottom" Width="770" 
+                                    Margin="0,13" Height="16"
                                 BorderThickness="1" BorderBrush="#FF473A23">
-                                <Border BorderThickness="1" BorderBrush="#FF907546">
+                                <Border BorderThickness="1" BorderBrush="White">
                                     <Grid VerticalAlignment="Center" HorizontalAlignment="Left"
-                                      Background="#FF2B5187" Width="{Binding ProgressDark}" Height="10"
+                                      Background="#FFA80000" Width="{Binding ProgressDark}" Height="12"
                                       Canvas.ZIndex="1">
                                     </Grid>
                                 </Border>
                             </Border>
-                            <!--#endregion -->
+
                             <!--#region Start Button-->
-                            <Button Grid.Column="1" x:Name="StartButton" Cursor="Hand" BorderThickness="0" ClipToBounds="True" Click="StartButton_Click" 
-                                    IsEnabled="{Binding IsStartGameEnabled}" Width="190" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center"
-                            >
-                                    <Button.Template>
+                            <Button Grid.Column="1" x:Name="StartButton" Cursor="Hand" 
+                                    BorderThickness="0" ClipToBounds="True" 
+                                    Click="StartButton_Click" 
+                                    IsEnabled="{Binding IsStartGameEnabled}" 
+                                    Width="240" Height="50" 
+                                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Button.Template>
                                     <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border BorderBrush="Black" >
-                                            <Border Name="border"  BorderThickness="2,1,2,1" BorderBrush="#303337">
-                                                <Grid Name="grid" Background="#14181d">
-                                                    <Label Name="label" FontFamily="Fonts/#BeaufortforLOL-Regular" Foreground="#987845" FontSize="16"
-                                               HorizontalAlignment="Center" VerticalAlignment="Center">START GAME</Label>
-                                                </Grid>
-                                            </Border>
+                                        <Border Name="border"  BorderThickness="2,1,2,1" 
+                                                BorderBrush="#FF323435">
+                                            <Grid Name="grid" Background="#FF1D1F20">
+                                                <Label Name="label" FontFamily="Fonts/#BeaufortforLOL-Regular"
+                                                       Foreground="White" FontSize="16"
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center">START GAME</Label>
+                                            </Grid>
                                         </Border>
 
                                         <ControlTemplate.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="true">
-                                                    <Setter TargetName="border" Property="BorderBrush" Value="#FF40454B" />
-                                                    <Setter TargetName="grid" Property="Background" Value="#1f242b" />
-                                                    <Setter TargetName="label" Property="Foreground" Value="#c7a063" />
-                                                </Trigger>
-                                                <Trigger Property="IsEnabled" Value="false">
-                                                    <Setter TargetName="border" Property="BorderBrush" Value="#FF635B50" />
-                                                    <Setter TargetName="grid" Property="Background" Value="#FF23272C" />
-                                                    <Setter TargetName="label" Property="Foreground" Value="#FF898782" />
-                                                </Trigger>
-                                                <Trigger Property="IsPressed" Value="true">
-                                                    <Setter TargetName="border" Property="BorderBrush" Value="#FF4C8DDA" />
-                                                    <Setter TargetName="grid" Property="Background" Value="#FF101317" />
-                                                    <Setter TargetName="label" Property="Foreground" Value="#FF917241" />
-                                                </Trigger>
-                                            </ControlTemplate.Triggers>
-                                        </ControlTemplate>
-                                    </Button.Template>
-                                </Button>
-                                <!--#endregion-->
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter TargetName="border" Property="BorderBrush" Value="#FF302C24" />
+                                                <Setter TargetName="grid" Property="Background" Value="#FF302C24" />
+                                                <Setter TargetName="label" Property="Foreground" Value="#caa357" />
+                                            </Trigger>
+                                            <Trigger Property="IsEnabled" Value="false">
+                                                <Setter TargetName="border" Property="BorderBrush" Value="#FF635B50" />
+                                                <Setter TargetName="grid" Property="Background" Value="#FF23272C" />
+                                                <Setter TargetName="label" Property="Foreground" Value="#FF898782" />
+                                            </Trigger>
+                                            <Trigger Property="IsPressed" Value="true">
+                                                <Setter TargetName="border" Property="BorderBrush" Value="#FF4C8DDA" />
+                                                <Setter TargetName="grid" Property="Background" Value="#FF101317" />
+                                                <Setter TargetName="label" Property="Foreground" Value="#FF917241" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <!--#endregion-->
                         </Grid>
                         <!--#endregion-->
                     </Grid>
                 </Border>
                 <!--#endregion-->
             </Grid>
-        </Grid>
-    </Border>
+        </Border>
+    </Grid>
 </Window>
  

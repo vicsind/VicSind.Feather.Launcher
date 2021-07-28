@@ -37,7 +37,7 @@ namespace Updater.Content
                 return Date.ToString("d MMM yyyy", new CultureInfo("ru-RU"));
             }
         }
-        public string Button { get; set; } = "MORE";
+        public string Button { get; set; } = "READ MORE";
         public Visibility ButtonVisibility => string.IsNullOrEmpty(LinkUrl) ? Visibility.Collapsed : Visibility.Visible;
     }
 }

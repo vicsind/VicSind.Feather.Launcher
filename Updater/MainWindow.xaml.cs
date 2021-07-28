@@ -29,12 +29,8 @@ namespace Updater
          */
         private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            ContentSystem contentSystem = new ContentSystem(ViewModel, LinksPanel, RatingTabControl);
+            ContentSystem contentSystem = new ContentSystem(ViewModel, LinksPanel);
             contentSystem.Start();
-            
-            _toggleTabTimer.Tick += (o, args) => ToggleTab();
-            _toggleTabTimer.Interval = TimeSpan.FromSeconds(5);
-            _toggleTabTimer.Start();
 
 #if DEBUG
 #else
@@ -106,20 +102,7 @@ namespace Updater
             }
         }
 
-
-        /*
-         * INTERACTIVITY
-         */
-        /// <summary>
-        /// Сменить таб на следующий.
-        /// </summary>
-        private void ToggleTab()
-        {
-            int newIndex = RatingTabControl.SelectedIndex == RatingTabControl.Items.Count - 1
-                ? 0
-                : RatingTabControl.SelectedIndex + 1;
-            RatingTabControl.SelectedIndex = newIndex;
-        }
+        
         
 
         /*

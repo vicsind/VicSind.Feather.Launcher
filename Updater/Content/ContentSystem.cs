@@ -13,11 +13,10 @@ namespace Updater.Content
     public class ContentSystem
     {
 
-        public ContentSystem(MainWindowViewModel viewModel, StackPanel linksPanel, TabControl ratingTabControl)
+        public ContentSystem(MainWindowViewModel viewModel, StackPanel linksPanel)
         {
             ViewModel = viewModel;
             LinksPanel = linksPanel;
-            RatingTabControl = ratingTabControl;
             _timer.Interval = TimeSpan.FromSeconds(5);
         }
 
@@ -44,8 +43,8 @@ namespace Updater.Content
                 ViewModel.SetBanners(banners);
                 var menu = await UpdaterContent.LoadLinks();
                 SetMenu(menu);
-                var ratings = await UpdaterContent.LoadRatings();
-                SetRatings(ratings);
+                //var ratings = await UpdaterContent.LoadRatings();
+                //SetRatings(ratings);
             }
             catch
             {
@@ -101,35 +100,6 @@ namespace Updater.Content
             }
         }
 
-        /// <summary>
-        /// Build and show ratings tabs.
-        /// </summary>
-        private void SetRatings(IEnumerable<Rating> ratings)
-        {
-            try
-            {
-                RatingTabControl.Items.Clear();
-                foreach (Rating rating in ratings)
-                {
-                    TabItem tabItem = new TabItem { Margin = new Thickness(0), BorderBrush = new SolidColorBrush(Colors.Transparent) };
-                    StackPanel stackPanel = new StackPanel { Background = new SolidColorBrush(Color.FromRgb(0x11, 0x12, 0x16)) }; // 111216
-                    Label label = new Label { Content = rating.Name };
-                    ListView listView = new ListView { ItemsSource = rating.Players, ItemTemplate = RatingTabControl.Resources["RatingTemplate"] as DataTemplate };
-
-                    // Build content.
-                    stackPanel.Children.Add(label);
-                    stackPanel.Children.Add(listView);
-                    tabItem.Content = stackPanel;
-                    RatingTabControl.Items.Add(tabItem);
-                }
-                RatingTabControl.SelectedIndex = new Random().Next(RatingTabControl.Items.Count);
-            }
-            catch
-            {
-                // ignored
-            }
-        }
-
 
         /*
          * SERVER CHECKING
@@ -164,9 +134,7 @@ namespace Updater.Content
         /// 
         /// </summary>
         private MainWindowViewModel ViewModel { get; }
-
-        public TabControl RatingTabControl { get; }
-
+        
         public StackPanel LinksPanel { get; }
 
         private readonly DispatcherTimer _timer = new DispatcherTimer();

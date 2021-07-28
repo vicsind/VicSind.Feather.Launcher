@@ -160,7 +160,7 @@
     <Resource Include="Images\content-bg.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\header-corner.png" />
+    <Resource Include="Images\Title.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
