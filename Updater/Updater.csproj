@@ -144,12 +144,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icon.ico" />
-    <Resource Include="Images\circle.png" />
-    <Resource Include="Images\faction-blue-fill.png" />
     <Resource Include="Images\faction-dark.png" />
     <Resource Include="Images\faction-light.png" />
-    <Resource Include="Images\faction-red-fill.png" />
-    <Resource Include="Images\star.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\content-bg.jpg" />

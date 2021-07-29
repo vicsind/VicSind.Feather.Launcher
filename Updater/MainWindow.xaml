@@ -145,37 +145,12 @@
                             <RowDefinition Height="*"></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <StackPanel Margin="0,0,0,1" Width="280"
-                                    HorizontalAlignment="Center">
-                            <Border BorderThickness="0,0,0,2" BorderBrush="#cc0000" 
-                                    Margin="10,7,15,0">
-                                <Label Content="ACTUAL EVENTS"
-                                       FontSize="20" Foreground="White" 
-                                       FontFamily="/Updater;component/Fonts/#Futura PT Medium"></Label>
-                            </Border>
-
-                            <Border BorderBrush="#303337" BorderThickness="1" 
-                                    Margin="0,5" Width="270">
-                                <Grid>
-                                    <Grid.Resources>
-                                        <!--#region ListView Style-->
-                                        <Style TargetType="ListView">
-                                            <Setter Property="Focusable" Value="False"></Setter>
-                                            <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
-                                            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
-                                            <Setter Property="VerticalAlignment" Value="Top"></Setter>
-                                            <Setter Property="Background" Value="#13141a"></Setter>
-                                            <Setter Property="BorderThickness" Value="0"></Setter>
-                                            <Setter Property="Margin" Value="0,5,0,0"></Setter>
-                                            <Setter Property="Width" Value="270"></Setter>
-                                            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"></Setter>
-                                            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"></Setter>
-                                        </Style>
-                                        <!--#endregion-->
-                                    </Grid.Resources>
-                                </Grid>
-                            </Border>
-                        </StackPanel>
+                        <Border BorderThickness="0,0,0,2" BorderBrush="#cc0000" 
+                                Margin="10,7,15,0">
+                            <Label Content="ACTUAL EVENTS"
+                                   FontSize="20" Foreground="White" 
+                                   FontFamily="/Updater;component/Fonts/#Futura PT Medium"></Label>
+                        </Border>
 
 
                         <!--#region Banners-->
@@ -377,19 +352,25 @@
                                                 <ColumnDefinition Width="80" />
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
+                                            <!-- News image -->
                                             <Grid Grid.Column="0" Height="55" Width="55" 
                                                   VerticalAlignment="Top" HorizontalAlignment="Center" 
                                                     Margin="0,10,0,5">
                                                 <Image Source="{Binding Thumbnail}" Margin="5"></Image>
                                             </Grid>
-                                            <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top" Margin="0,10,10,5">
+                                            <Grid Grid.Column="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                </Grid.RowDefinitions>
                                                 <!-- Title -->
-                                                <Grid>
+                                                <Grid Background="#1F000000">
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition></ColumnDefinition>
                                                         <ColumnDefinition Width="200"></ColumnDefinition>
                                                     </Grid.ColumnDefinitions>
-                                                    <StackPanel Orientation="Horizontal">
+                                                    <StackPanel Orientation="Horizontal" Margin="10">
                                                         <Rectangle Height="8" Width="8" Fill="#FFCC0000" RenderTransformOrigin="0.5,0.5">
                                                             <Rectangle.RenderTransform>
                                                                 <TransformGroup>
@@ -397,31 +378,31 @@
                                                                 </TransformGroup>
                                                             </Rectangle.RenderTransform>
                                                         </Rectangle>
-                                                        <!--<Image Source="Images/circle.png" Height="13" VerticalAlignment="Center"></Image>-->
                                                         <TextBlock Text="{Binding Title, Converter={StaticResource CaseConverter}}"
                                                                    VerticalAlignment="Center" 
                                                            FontSize="16" Foreground="#FFB89B6F" FontFamily="Fonts/#Futura PT Medium"
                                                            Margin="10,0">
                                                         </TextBlock>
                                                     </StackPanel>
-                                                    <TextBlock Grid.Column="1" Text="{Binding DateLabel}" VerticalAlignment="Center" Margin="0"
+                                                    <TextBlock Grid.Column="1" Text="{Binding DateLabel}" VerticalAlignment="Center" Margin="10"
                                                        FontSize="14" Foreground="#FF807C77" FontFamily="Fonts/#Futura PT Book"
                                                        HorizontalAlignment="Right">
                                                     </TextBlock>
                                                 </Grid>
+
                                                 <!-- Desc -->
-                                                <TextBlock Text="{Binding Desc}" 
-                                                       HorizontalAlignment="Left" Margin="0,3,0,3"
+                                                <Grid Grid.Row="1" VerticalAlignment="Top" Margin="0,0,10,5">
+                                                    <TextBlock Text="{Binding Desc}" 
+                                                       HorizontalAlignment="Left" Margin="5"
                                                        FontSize="13" Foreground="White" FontFamily="Fonts/#Proxima Nova Rg"
                                                        TextWrapping="Wrap" TextAlignment="Left" 
                                                        LineStackingStrategy="BlockLineHeight" LineHeight="22">
-                                                </TextBlock>
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition></ColumnDefinition>
-                                                        <ColumnDefinition></ColumnDefinition>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Grid Grid.Column="1" Width="85" Height="28" HorizontalAlignment="Right"
+                                                    </TextBlock>
+                                                </Grid>
+
+                                                <!-- Read More -->
+                                                <Grid Grid.Row="2">
+                                                    <Grid Width="85" Height="28" HorizontalAlignment="Right"
                                                             Margin="0,-15,0,5" Cursor="Hand" MouseLeftButtonDown="Link_OnClick"
                                                             Tag="{Binding LinkUrl}"
                                                             Visibility="{Binding ButtonVisibility}">
@@ -442,7 +423,7 @@
                                                                Foreground="#FFE23131" Content="{Binding Button}"></Label>
                                                     </Grid>
                                                 </Grid>
-                                            </StackPanel>
+                                            </Grid>
                                         </Grid>
                                     </Border>
                                 </DataTemplate>
@@ -485,7 +466,6 @@
                             <Label Grid.Column="0" Content="{Binding Label1, Converter ={StaticResource CaseConverter}}" HorizontalAlignment="Center" />
                             <Label Grid.Column="1" Content="{Binding Label2, Converter ={StaticResource CaseConverter}}" HorizontalAlignment="Center" ></Label>
                             <Label Grid.Column="2" Content="{Binding Label3, Converter ={StaticResource CaseConverter}}" ></Label>
-
 
                         </Grid>
 

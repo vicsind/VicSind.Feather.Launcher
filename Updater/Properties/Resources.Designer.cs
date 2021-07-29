@@ -61,31 +61,11 @@ namespace Updater.Properties {
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap circle {
-            get {
-                object obj = ResourceManager.GetObject("circle", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на data.
         /// </summary>
         internal static string Data {
             get {
                 return ResourceManager.GetString("Data", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap faction_blue_fill {
-            get {
-                object obj = ResourceManager.GetObject("faction_blue_fill", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -105,16 +85,6 @@ namespace Updater.Properties {
         internal static System.Drawing.Bitmap faction_light {
             get {
                 object obj = ResourceManager.GetObject("faction_light", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap faction_red_fill {
-            get {
-                object obj = ResourceManager.GetObject("faction_red_fill", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,16 +113,6 @@ namespace Updater.Properties {
         internal static string Server {
             get {
                 return ResourceManager.GetString("Server", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap star {
-            get {
-                object obj = ResourceManager.GetObject("star", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
