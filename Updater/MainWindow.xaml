@@ -452,14 +452,9 @@
                             <Grid.Resources>
                                 <Style TargetType="Label">
                                     <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
-                                    <Setter Property="Foreground" Value="White"></Setter>
+                                    <Setter Property="Foreground" Value="LightGray"></Setter>
                                     <Setter Property="FontFamily" Value="Fonts/#Proxima Nova Rg"></Setter>
                                     <Setter Property="FontSize" Value="13"></Setter>
-                                    <Setter Property="Effect">
-                                        <Setter.Value>
-                                            <DropShadowEffect ShadowDepth="2" BlurRadius="2" Color="#FF000000" RenderingBias="Quality" />
-                                        </Setter.Value>
-                                    </Setter>
                                 </Style>
                             </Grid.Resources>
 

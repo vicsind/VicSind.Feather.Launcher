@@ -33,6 +33,11 @@ namespace Updater
             contentSystem.Start();
 
 #if DEBUG
+            ViewModel.Label1 = "Debug mode";
+            ViewModel.Label2 = "3 / 12";
+            ViewModel.Label3 = "5 032 KB / 6 723 KB";
+            ViewModel.Progress1 = 5032.0 / 6723.0 * 100.0;
+            ViewModel.Progress2 = 3.0 / 12.0 * 100.0;
 #else
             IUpdatingSystem filesUpdatingSystem = new FilesUpdatingSystem(ViewModel);
             IUpdatingSystem dataUpdatingSystem = new DataUpdatingSystem(ViewModel);
