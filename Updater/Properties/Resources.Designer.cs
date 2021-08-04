@@ -90,7 +90,7 @@ namespace Updater.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 109.
+        ///   Ищет локализованную строку, похожую на 0.
         /// </summary>
         internal static string FileCountXorKey {
             get {
@@ -108,7 +108,7 @@ namespace Updater.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Nemesis.
+        ///   Ищет локализованную строку, похожую на Amazing Shaiya.
         /// </summary>
         internal static string Server {
             get {

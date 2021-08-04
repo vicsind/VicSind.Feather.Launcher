@@ -26,7 +26,7 @@ namespace Updater.Common
 
         private static readonly string[] SiteUrls =
         {
-            "https://api.sh-nemesis.com/",
+            "https://api.shaiya-amazing.com/",
             //"http://updater.shaiya-erection.ru/",
             //"https://localhost:44313/"
         };
