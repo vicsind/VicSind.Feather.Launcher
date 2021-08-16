@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using Updater.Config;
 
 namespace Updater.SAH
 {
@@ -212,8 +213,10 @@ namespace Updater.SAH
             writer.Write(filesCount);
             foreach (SahFile file in folder.Files)
             {
-                writer.Write(file.Name.Length + 1);
-                writer.Write(Encoding.Default.GetBytes(file.Name));
+                string name = GetFileName(file.Name);
+                byte[] nameBytes = Encoding.Default.GetBytes(name);
+                writer.Write(nameBytes.Length + 1);
+                writer.Write(nameBytes);
                 writer.Write((byte)0);
                 writer.Write(file.Offset);
                 writer.Write(file.Size);
@@ -233,14 +236,37 @@ namespace Updater.SAH
             writer.Write(folder.Folders.Count);
             foreach (SahFolder subFolder in folder.Folders)
             {
-                writer.Write(subFolder.Name.Length + 1);
-                writer.Write(Encoding.Default.GetBytes(subFolder.Name));
+                string name = subFolder.Name;
+                byte[] nameBytes = Encoding.Default.GetBytes(name);
+                writer.Write(nameBytes.Length + 1);
+                writer.Write(nameBytes);
                 writer.Write((byte)0);
 
                 WriteFiles(writer, subFolder);
             }
         }
         #endregion
+
+
+        /// <summary>
+        /// Get filename according "EffectsOff" settings.
+        /// </summary>
+        /// <returns></returns>
+        private static string GetFileName(string fileName)
+        {
+            string extension = Path.GetExtension(fileName).ToLower();
+            switch (extension)
+            {
+                case ".eft" when Settings.Default.EffectsOff:
+                    fileName = $"{Path.GetFileNameWithoutExtension(fileName)}.XXX";
+                    break;
+                case ".xxx" when !Settings.Default.EffectsOff:
+                    fileName = $"{Path.GetFileNameWithoutExtension(fileName)}.EFT";
+                    break;
+            }
+
+            return fileName;
+        }
 
         private static byte XorKey => Convert.ToByte(Properties.Resources.FileCountXorKey);
     }

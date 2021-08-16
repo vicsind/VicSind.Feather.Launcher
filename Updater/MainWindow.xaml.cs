@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Updater.Common;
 using Updater.Content;
 using Updater.Logging;
+using Updater.SAH;
 using Updater.Updating;
 using Updater.ViewModels;
 
@@ -135,8 +136,23 @@ namespace Updater
                 // ignored
             }
         }
-        
-        
+
+
+        private void EffectsOff_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // Resave sah with new config.
+                SahData sah = new SahData(Global.SahPath);
+                sah.Load();
+                sah.Save();
+            }
+            catch
+            {
+                // ignored
+            }
+        }
+
 
         /// <summary>
         /// 

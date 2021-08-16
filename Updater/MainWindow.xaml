@@ -445,6 +445,7 @@
 
                         <Grid Margin="25,0,25,-30" Height="30">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="400"></ColumnDefinition>
                                 <ColumnDefinition Width="100"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
@@ -458,9 +459,17 @@
                                 </Style>
                             </Grid.Resources>
 
-                            <Label Grid.Column="0" Content="{Binding Label1, Converter ={StaticResource CaseConverter}}" HorizontalAlignment="Center" />
-                            <Label Grid.Column="1" Content="{Binding Label2, Converter ={StaticResource CaseConverter}}" HorizontalAlignment="Center" ></Label>
-                            <Label Grid.Column="2" Content="{Binding Label3, Converter ={StaticResource CaseConverter}}" ></Label>
+                            <CheckBox HorizontalAlignment="Center" 
+                                      IsChecked="{Binding EffectsOff}"
+                                      FontFamily="Fonts/#Proxima Nova Rg"
+                                      Click="EffectsOff_Click"
+                                      Margin="10,0"
+                                      IsEnabled="{Binding IsStartGameEnabled}">DISABLE EFFECTS</CheckBox>
+                            <Label Grid.Column="1" Content="{Binding Label1, Converter ={StaticResource CaseConverter}}"
+                                   HorizontalAlignment="Center" />
+                            <Label Grid.Column="2" Content="{Binding Label2, Converter ={StaticResource CaseConverter}}" 
+                                   HorizontalAlignment="Center" ></Label>
+                            <Label Grid.Column="3" Content="{Binding Label3, Converter ={StaticResource CaseConverter}}" ></Label>
 
                         </Grid>
 

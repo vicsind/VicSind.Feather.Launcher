@@ -228,14 +228,14 @@ namespace Updater.ViewModels
 
         public bool IsStartGameEnabled
         {
-            get => _IsStartGameEnabled;
+            get => _isStartGameEnabled;
             set
             {
-                _IsStartGameEnabled = value;
+                _isStartGameEnabled = value;
                 RaisePropertyChanged(nameof(IsStartGameEnabled));
             }
         }
-        private bool _IsStartGameEnabled = true;
+        private bool _isStartGameEnabled = true;
 
         /// <summary>
         /// 
@@ -252,7 +252,7 @@ namespace Updater.ViewModels
         private double _playersOnline;
 
         /// <summary>
-        /// Disabling effects.
+        /// Effects disabled.
         /// </summary>
         public bool EffectsOff
         {
