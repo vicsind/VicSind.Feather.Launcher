@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using Updater.Config;
 using Updater.Content;
 
 namespace Updater.ViewModels
@@ -249,5 +250,18 @@ namespace Updater.ViewModels
             }
         }
         private double _playersOnline;
+
+        /// <summary>
+        /// Disabling effects.
+        /// </summary>
+        public bool EffectsOff
+        {
+            get => Settings.Default.EffectsOff;
+            set
+            {
+                Settings.Default.EffectsOff = value;
+                Settings.Default.Save();
+            }
+        }
     }
 }

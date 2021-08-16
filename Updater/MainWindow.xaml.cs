@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
 using Updater.Common;
 using Updater.Content;
 using Updater.Logging;
@@ -21,7 +20,7 @@ namespace Updater
         {
             DataContext = ViewModel;
             InitializeComponent();
-            Title = Properties.Resources.Server;
+            Title = Global.SERVER_NAME;
         }
         
         /*
@@ -143,8 +142,6 @@ namespace Updater
         /// 
         /// </summary>
         private MainWindowViewModel ViewModel { get; } = new MainWindowViewModel();
-
-        private readonly DispatcherTimer _toggleTabTimer = new DispatcherTimer();
 
         /// <summary>
         /// Название файла game

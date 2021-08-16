@@ -126,14 +126,5 @@ namespace Updater.Properties {
                 return ((byte[])(obj));
             }
         }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Amazing Shaiya.
-        /// </summary>
-        internal static string Server {
-            get {
-                return ResourceManager.GetString("Server", resourceCulture);
-            }
-        }
     }
 }

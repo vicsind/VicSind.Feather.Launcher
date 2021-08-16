@@ -79,6 +79,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Common\Global.cs" />
+    <Compile Include="Config\Settings.cs" />
     <Compile Include="Content\ActualEvent.cs" />
     <Compile Include="Content\Banner.cs" />
     <Compile Include="Content\ContentSystem.cs" />

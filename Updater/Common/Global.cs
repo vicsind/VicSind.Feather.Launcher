@@ -91,16 +91,21 @@ namespace Updater.Common
 
 
         /// <summary>
-        /// Файлы, необходимые для запуска
+        /// Файлы, необходимые для запуска.
         /// </summary>
         public static string[] ClientFiles;
-        
+
 
         /// <summary>
         /// Path to updater temp file.
         /// </summary>
         public static string TempUpdaterPath => Path.Combine(ClientPath, TEMP_UPDATER_FILENAME);
-        
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string SERVER_NAME = "Amazing Shaiya";
+
         /// <summary>
         /// Название файла апдейтера
         /// </summary>
