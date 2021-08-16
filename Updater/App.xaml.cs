@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Reflection;
 using System.Threading;
 using System.Windows;
 using Updater.Common;
@@ -22,6 +24,9 @@ namespace Updater
         [STAThread]
         public static void Main(string[] args)
         {
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+
             CloseOpenedUpdater();
             HandleArgs();
 
@@ -33,6 +38,23 @@ namespace Updater
                 app.Run();
                 mutex.ReleaseMutex();
             }
+        }
+
+        private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        {
+            AssemblyName assemblyName = new AssemblyName(args.Name);
+
+            if (string.Equals(assemblyName.Name, "DotNetZip", StringComparison.CurrentCultureIgnoreCase))
+            {
+                return Assembly.Load(Updater.Properties.Resources.DotNetZip);
+            }
+
+            if (string.Equals(assemblyName.Name, "Newtonsoft.Json", StringComparison.CurrentCultureIgnoreCase))
+            {
+                return Assembly.Load(Updater.Properties.Resources.Newtonsoft_Json);
+            }
+
+            return null;
         }
 
         protected void Application_Startup(object sender, StartupEventArgs e)

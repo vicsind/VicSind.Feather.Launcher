@@ -152,5 +152,10 @@
   <ItemGroup>
     <Resource Include="Images\Title.png" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\dll\DotNetZip.dll" />
+    <Content Include="Resources\dll\Newtonsoft.Json.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
