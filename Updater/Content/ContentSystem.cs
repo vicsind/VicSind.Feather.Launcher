@@ -148,17 +148,7 @@ namespace Updater.Content
             try
             {
                 string jsonString = await UpdaterContent.LoadContentFromUrlAsync(UpdaterContent.ServerStatusUrl);
-                bool isOnline = jsonString == "1";
-                if (isOnline)
-                {
-                    ViewModel.ServerOnlineVisibility = Visibility.Visible;
-                    ViewModel.ServerOfflineVisibility = Visibility.Collapsed;
-                }
-                else
-                {
-                    ViewModel.ServerOnlineVisibility = Visibility.Collapsed;
-                    ViewModel.ServerOfflineVisibility = Visibility.Visible;
-                }
+                ViewModel.IsServerOnline = jsonString == "1";
             }
             catch
             {

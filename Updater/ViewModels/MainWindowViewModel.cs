@@ -90,34 +90,32 @@ namespace Updater.ViewModels
 
         public GridLength UoF { get; set; } = new GridLength(0.5, GridUnitType.Star);
 
-
         /// <summary>
         /// 
         /// </summary>
-        public Visibility ServerOnlineVisibility
+        public bool IsServerOnline
         {
-            get => _serverOnlineVisibility;
+            get => _isServerOnline;
             set
             {
-                _serverOnlineVisibility = value;
+                _isServerOnline = value;
+                RaisePropertyChanged(nameof(IsServerOnline));
                 RaisePropertyChanged(nameof(ServerOnlineVisibility));
+                RaisePropertyChanged(nameof(ServerOfflineVisibility));
+                RaisePropertyChanged(nameof(Players));
             }
         }
-        private Visibility _serverOnlineVisibility = Visibility.Collapsed;
+        private bool _isServerOnline;
 
         /// <summary>
         /// 
         /// </summary>
-        public Visibility ServerOfflineVisibility
-        {
-            get => _serverOfflineVisibility;
-            set
-            {
-                _serverOfflineVisibility = value;
-                RaisePropertyChanged(nameof(ServerOfflineVisibility));
-            }
-        }
-        private Visibility _serverOfflineVisibility = Visibility.Collapsed;
+        public Visibility ServerOnlineVisibility => IsServerOnline ? Visibility.Visible : Visibility.Hidden;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Visibility ServerOfflineVisibility => IsServerOnline ? Visibility.Hidden : Visibility.Visible;
 
 
         /// <summary>
@@ -240,7 +238,7 @@ namespace Updater.ViewModels
         /// <summary>
         /// 
         /// </summary>
-        public string Players => PlayersOnline > 0 ? $"PLAYERS ONLINE: {PlayersOnline}" : "";
+        public string Players => IsServerOnline && PlayersOnline > 0 ? $"PLAYERS ONLINE: {PlayersOnline}" : "";
 
         /// <summary>
         /// 
