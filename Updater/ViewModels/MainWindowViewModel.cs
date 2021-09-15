@@ -240,16 +240,22 @@ namespace Updater.ViewModels
         /// <summary>
         /// 
         /// </summary>
-        public double PlayersOnline
+        public string Players => PlayersOnline > 0 ? $"PLAYERS ONLINE: {PlayersOnline}" : "";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int PlayersOnline
         {
             get => _playersOnline;
             set
             {
                 _playersOnline = value;
                 RaisePropertyChanged(nameof(PlayersOnline));
+                RaisePropertyChanged(nameof(Players));
             }
         }
-        private double _playersOnline;
+        private int _playersOnline;
 
         /// <summary>
         /// Effects disabled.

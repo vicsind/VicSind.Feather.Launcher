@@ -63,8 +63,7 @@
                                     <Setter Property="Cursor" Value="Arrow"></Setter>
                                 </Style>
                             </StackPanel.Resources>
-                            <Label>PLAYERS ONLINE:</Label>
-                            <Label Content="{Binding PlayersOnline}"></Label>
+                            <Label Content="{Binding Players}"></Label>
                         </StackPanel>
                         <!--#endregion-->
 
