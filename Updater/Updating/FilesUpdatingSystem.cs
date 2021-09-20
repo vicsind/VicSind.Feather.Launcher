@@ -56,6 +56,10 @@ namespace Updater.Updating
             bool updatingRequired = !File.Exists(filePath)
                                     || !string.IsNullOrEmpty(actualFile.Checksum) 
                                     && !Helper.Checksum(filePath, actualFile.Checksum);
+//#if DEBUG
+//            if (actualFile.Name == "Updater.exe")
+//                updatingRequired = false;
+//#endif
             if (updatingRequired)
             {
                 bool isNewLauncher = string.Equals(actualFile.Name, Global.UPDATER_FILENAME, StringComparison.OrdinalIgnoreCase);
@@ -83,6 +87,10 @@ namespace Updater.Updating
             // Remove current file.
             string filePath = Path.Combine(Global.ClientPath, actualFile.Name);
             Helper.DeleteFile(filePath);
+
+            string path = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
 
             // Download new file.
             _viewModel.Label1 = Strings.Get(StringType.Downloading); // "Загрузка"

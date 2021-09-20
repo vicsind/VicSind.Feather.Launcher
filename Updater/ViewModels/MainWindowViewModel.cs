@@ -110,12 +110,12 @@ namespace Updater.ViewModels
         /// <summary>
         /// 
         /// </summary>
-        public Visibility ServerOnlineVisibility => IsServerOnline ? Visibility.Visible : Visibility.Hidden;
+        public Visibility ServerOnlineVisibility => IsServerOnline ? Visibility.Visible : Visibility.Collapsed;
 
         /// <summary>
         /// 
         /// </summary>
-        public Visibility ServerOfflineVisibility => IsServerOnline ? Visibility.Hidden : Visibility.Visible;
+        public Visibility ServerOfflineVisibility => IsServerOnline ? Visibility.Collapsed : Visibility.Visible;
 
 
         /// <summary>
