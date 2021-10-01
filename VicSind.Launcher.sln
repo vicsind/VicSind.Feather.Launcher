@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Updater", "Updater\Updater.csproj", "{4CEC1790-2582-4133-96A5-83584AAC12E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VicSind.Feather.Launcher", "Updater\VicSind.Feather.Launcher.csproj", "{4CEC1790-2582-4133-96A5-83584AAC12E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
