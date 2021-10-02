@@ -212,7 +212,7 @@ namespace Updater.ViewModels
         /// <summary>
         /// Ширина прогресс бара
         /// </summary>
-        private const double PROGRESS_BAR_WIDTH = 850.0;
+        private const double PROGRESS_BAR_WIDTH = 710.0;
 
         /// <summary>
         /// Значение ширины первого прогрессбара

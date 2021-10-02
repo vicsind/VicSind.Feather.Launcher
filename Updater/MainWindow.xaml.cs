@@ -39,13 +39,13 @@ namespace Updater
             ViewModel.Progress1 = 5032.0 / 6723.0 * 100.0;
             ViewModel.Progress2 = 3.0 / 12.0 * 100.0;
 #else
-#endif
             IUpdatingSystem filesUpdatingSystem = new FilesUpdatingSystem(ViewModel);
             IUpdatingSystem dataUpdatingSystem = new DataUpdatingSystem(ViewModel);
             UpdatingEngine updatingEngine = new UpdatingEngine(ViewModel, filesUpdatingSystem, dataUpdatingSystem);
             updatingEngine.StartUpdating();
+#endif
         }
-        
+
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             try

@@ -44,15 +44,15 @@ namespace Updater.Content
             {
                 var news = await UpdaterContent.LoadNews();
                 ViewModel.SetNews(news);
-                var banners = await UpdaterContent.LoadBanners();
-                ViewModel.SetBanners(banners);
+                //var banners = await UpdaterContent.LoadBanners();
+                //ViewModel.SetBanners(banners);
                 var menu = await UpdaterContent.LoadLinks();
                 SetMenu(menu);
-                var actualEvents = await UpdaterContent.LoadEvents();
-                ViewModel.SetActualEvents(actualEvents);
+                //var actualEvents = await UpdaterContent.LoadEvents();
+                //ViewModel.SetActualEvents(actualEvents);
 
-                await UpdatePlayersOnline();
-                await UpdateFactionBalance();
+                //await UpdatePlayersOnline();
+                //await UpdateFactionBalance();
                 await CheckServerStatus();
             }
             catch
@@ -80,13 +80,13 @@ namespace Updater.Content
                     }
                     LinksPanel.Children.Add(label);
 
-                    if (link != menu.Last())
-                    {
-                        Rectangle rectangle = new Rectangle
-                            { Height = 6, Width = 6, Fill = new SolidColorBrush(Color.FromRgb(204, 0, 0)) };
-                        rectangle.LayoutTransform = new RotateTransform(45);
-                        LinksPanel.Children.Add(rectangle);
-                    }
+                    //if (link != menu.Last())
+                    //{
+                    //    Rectangle rectangle = new Rectangle
+                    //        { Height = 6, Width = 6, Fill = new SolidColorBrush(Color.FromRgb(204, 0, 0)) };
+                    //    rectangle.LayoutTransform = new RotateTransform(45);
+                    //    LinksPanel.Children.Add(rectangle);
+                    //}
                 }
             }
             catch

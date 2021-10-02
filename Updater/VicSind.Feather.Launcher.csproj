@@ -127,6 +127,11 @@
     <Resource Include="Fonts\FuturaPT-Book.ttf" />
     <Resource Include="Fonts\ProximaNova-Regular.ttf" />
     <Resource Include="Fonts\FuturaPT-Medium.ttf" />
+    <Resource Include="Fonts\AGKorneliaC.otf" />
+    <Resource Include="Fonts\AlgerianTygra.ttf" />
+    <Resource Include="Fonts\ExyleC.otf" />
+    <Resource Include="Fonts\KorinaLightTYGRA.ttf" />
+    <Resource Include="Fonts\OldKingC.otf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

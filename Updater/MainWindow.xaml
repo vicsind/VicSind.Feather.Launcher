@@ -6,14 +6,14 @@
         xmlns:resources="clr-namespace:Updater.Resources"
         xmlns:content="clr-namespace:Updater.Content"
         mc:Ignorable="d"
-        Title="IMPERIUM launcher" 
+        Title="Shaiya Launcher" 
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" WindowStyle="None" 
         HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
         HorizontalAlignment="Center" VerticalAlignment="Center" 
         ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.IsSharedSizeScope="True" 
         Icon="icon.ico" Loaded="MainWindow_OnLoaded" 
-        Height="640" Width="1095" MinHeight="640" MinWidth="1105" 
+        Height="590" Width="955" MinHeight="590" MinWidth="955" 
         BorderThickness="1" Background="Transparent">
     <Window.Resources>
         <ResourceDictionary>
@@ -30,61 +30,32 @@
             <resources:CaseConverter x:Key="CaseConverter" />
         </ResourceDictionary>
     </Window.Resources>
+    <Border BorderThickness="1" BorderBrush="#303337">
 
-    <Grid Background="Transparent">
-            <Grid ZIndex="1">
-                <Image Source="Images/Title.png" Width="588" VerticalAlignment="Top"
-                       MouseLeftButtonDown="Window_MouseLeftButtonDown"></Image>
-        </Grid>
-        <Border Height="621" BorderThickness="1" BorderBrush="#303337" VerticalAlignment="Bottom">
-            <Grid Height="620" Width="1105" ZIndex="0">
+        <Grid Background="#0a0a0a">
+            <Grid Height="585" VerticalAlignment="Bottom">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="43"></RowDefinition>
                     <RowDefinition Height="34"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="108"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid.Background>
-                    <ImageBrush ImageSource="Images/content-bg.jpg" Stretch="UniformToFill"></ImageBrush>
-                </Grid.Background>
 
-                <!--#region Small menu-->
-                <Border Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="#303337" >
-                    <Grid Background="Black">
+                <!--#region Header-->
+                <Border Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="Black" MouseLeftButtonDown="Window_MouseLeftButtonDown" >
+                    <Grid Background="#FF0C0D0F">
 
-                        <!--#region Links-->
-                        <StackPanel Orientation="Horizontal" Margin="15,0">
-                            <StackPanel.Resources>
-                                <Style TargetType="Label">
-                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                    <Setter Property="FontSize" Value="12"></Setter>
-                                    <Setter Property="FontFamily" Value="/Updater;component/Fonts/#Proxima Nova Rg"></Setter>
-                                    <Setter Property="Foreground" Value="White"></Setter>
-                                    <Setter Property="Cursor" Value="Arrow"></Setter>
-                                </Style>
-                            </StackPanel.Resources>
-                            <Label Content="{Binding Players}"></Label>
-                        </StackPanel>
-                        <!--#endregion-->
-
-                        <!--#region Server status-->
-                        <StackPanel Orientation="Horizontal" Margin="15,0"
-                            VerticalAlignment="Center" HorizontalAlignment="Right">
-                            <Label Content="SERVER ONLINE" Foreground="#FF64B358" FontSize="12" 
-                               FontFamily="Fonts/#Proxima Nova Rg" Visibility="{Binding ServerOnlineVisibility}"
-                               HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-                            <Label Content="SERVER OFFLINE" Foreground="#FFB35858" FontSize="12" 
-                               FontFamily="Fonts/#Proxima Nova Rg" Visibility="{Binding ServerOfflineVisibility}"
-                               HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"
+                               FontFamily="Fonts/#ExyleC" FontSize="32">SHAIYA UPDATER</Label>
+                        <StackPanel Orientation="Horizontal" Margin="5,0" HorizontalAlignment="Right" VerticalAlignment="Top" >
                             <!--#region CloseButton-->
-                            <Button Content="" x:Name="CloseButton" Width="30" Height="30" IsCancel="True" BorderThickness="0" Cursor="Hand" 
-                                    Click="HideButton_OnClickButton_Click" Margin="10,0,0,0">
+                            <Button Content="" x:Name="CloseButton" Width="40" Height="40" IsCancel="True" BorderThickness="0" Cursor="Hand" 
+                                Click="HideButton_OnClickButton_Click" >
                                 <Button.Template>
                                     <ControlTemplate TargetType="{x:Type Button}">
                                         <Label x:Name="CloseLabel" Content="×"
-                                               Width="25" HorizontalContentAlignment="Center"
-                                               FontSize="17" FontFamily="Arial"></Label>
+                                           Width="40" HorizontalContentAlignment="Center" 
+                                           FontSize="28" FontFamily="Arial"></Label>
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsMouseOver" Value="False">
                                                 <Setter TargetName="CloseLabel" Property="Foreground" Value="LightGray" />
@@ -98,23 +69,21 @@
                             </Button>
                             <!--#endregion-->
                         </StackPanel>
-                        <!--#endregion-->
                     </Grid>
                 </Border>
                 <!--#endregion-->
 
-                <!--#region Header-->
-                <Border Grid.Row="1" BorderThickness="0,1,0,1" BorderBrush="Black" MouseLeftButtonDown="Window_MouseLeftButtonDown" >
-                    <Grid Background="#D8000000">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
-                                    Margin="15,0" x:Name="LinksPanel">
+                <!--#region SubMenu-->
+                <Border Grid.Row="1" BorderThickness="0,1,0,1" BorderBrush="#303337" >
+                    <Grid Background="#FF101015">
+                        <!--#region Links-->
+                        <StackPanel Orientation="Horizontal" Margin="15,0" x:Name="LinksPanel">
                             <StackPanel.Resources>
                                 <Style TargetType="Label">
-                                    <Setter Property="Margin" Value="20,0"></Setter>
+                                    <Setter Property="Margin" Value="11,0"></Setter>
                                     <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                    <Setter Property="FontSize" Value="12"></Setter>
-                                    <Setter Property="FontFamily" Value="/Updater;component/Fonts/#Proxima Nova Rg"></Setter>
-                                    <Setter Property="Foreground" Value="White"></Setter>
+                                    <Setter Property="FontFamily" Value="Fonts/#BeaufortforLOL-Regular"></Setter>
+                                    <Setter Property="Foreground" Value="DarkGray"></Setter>
                                     <Setter Property="Cursor" Value="Hand"></Setter>
                                     <EventSetter Event="MouseLeftButtonDown" Handler="Link_OnClick"></EventSetter>
                                     <Style.Triggers>
@@ -125,215 +94,43 @@
                                 </Style>
                             </StackPanel.Resources>
                         </StackPanel>
+                        <!--#endregion-->
+
+                        <!--#region Server status-->
+                        <StackPanel Orientation="Horizontal" Margin="15,0"
+                            VerticalAlignment="Center" HorizontalAlignment="Right">
+                            <Label Content="SERVER ONLINE" Foreground="#FF64B358" FontSize="12" 
+                                   FontFamily="Fonts/#Proxima Nova Rg" Visibility="{Binding ServerOnlineVisibility}"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                            <Label Content="SERVER OFFLINE" Foreground="#FFB35858" FontSize="12" 
+                                   FontFamily="Fonts/#Proxima Nova Rg" Visibility="{Binding ServerOfflineVisibility}"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                        </StackPanel>
+                        <!--#endregion-->
                     </Grid>
                 </Border>
                 <!--#endregion-->
 
                 <!--#region Content-->
                 <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="290"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="Images/content-bg.jpg" Stretch="UniformToFill"></ImageBrush>
+                    </Grid.Background>
 
-                    <!--#region Left column-->
-                    <Grid Grid.Column="0" Background="#D813141a" Margin="10,0, 0, 0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="0,0,0,2" BorderBrush="#cc0000" 
-                                Margin="10,7,15,0">
-                            <Label Content="ACTUAL EVENTS"
-                                   FontSize="20" Foreground="White" 
-                                   FontFamily="/Updater;component/Fonts/#Futura PT Medium"></Label>
-                        </Border>
-
-
-                        <!--#region Banners-->
-                        <ListView Grid.Row="1" x:Name="BannersListView" Focusable="False" 
-                                  HorizontalContentAlignment="Stretch" Visibility="Visible"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                                  ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                                  Background="Transparent" BorderThickness="0" 
-                                  HorizontalAlignment="Right" VerticalAlignment="Top"
-                                  ItemsSource="{Binding Banners}"
-                                  Margin="0,7,0,0">
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="{x:Type ListViewItem}">
-                                    <Setter Property="Background" Value="Transparent" />
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                                <ContentPresenter />
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.ItemTemplate>
-                                <DataTemplate DataType="content:Banner">
-                                    <Border Margin="0,0,0,2" BorderThickness="1" VerticalAlignment="Top" Background="Transparent" >
-                                        <Border.Style>
-                                            <Style TargetType="Border">
-                                                <Style.Triggers>
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter Property="BorderBrush" Value="#7F2E6FA4" />
-                                                    </Trigger>
-                                                    <Trigger Property="IsMouseOver" Value="False">
-                                                        <Setter Property="BorderBrush" Value="Transparent" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </Border.Style>
-                                        <Grid Background="Transparent" Cursor="Hand" Height="50" Margin="1" Width="280"
-                                          MouseLeftButtonDown="Link_OnClick" Tag="{Binding Link}">
-                                            <Image Source="{Binding Image}" Stretch="UniformToFill"></Image>
-                                        </Grid>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <!--#endregion-->
-
-                        <Grid Grid.Row="2">
-                            <ListView Focusable="False"
-                                      HorizontalContentAlignment="Stretch" 
-                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                                      ScrollViewer.VerticalScrollBarVisibility="Disabled" 
-                                      Background="Transparent" BorderThickness="0" 
-                                      HorizontalAlignment="Left" VerticalAlignment="Top"
-                                      ItemsSource="{Binding ActualEvents}"
-                                      Margin="0,5,0,0">
-                                <ListView.ItemTemplate>
-
-                                    <DataTemplate DataType="content:ActualEvent">
-                                        <Border Margin="0,2" BorderThickness="1" VerticalAlignment="Top" Background="Transparent" 
-                                            Width="278">
-                                            <Border.Style>
-                                                <Style TargetType="Border">
-                                                    <Style.Triggers>
-                                                        <Trigger Property="IsMouseOver" Value="True">
-                                                            <Setter Property="BorderBrush" Value="#3F888888" />
-                                                        </Trigger>
-                                                        <Trigger Property="IsMouseOver" Value="False">
-                                                            <Setter Property="BorderBrush" Value="#3F564b35" />
-                                                        </Trigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Border.Style>
-                                            <Grid Background="#BF131417" Height="55">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="30" />
-                                                    <ColumnDefinition Width="40" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="30" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.Resources>
-                                                    <Style TargetType="TextBlock">
-                                                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                                                        <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                                        <Setter Property="FontFamily" Value="Fonts/#Proxima Nova Rg"></Setter>
-                                                        <Setter Property="Foreground" Value="#FFCBB9AA"></Setter>
-                                                        <Setter Property="Margin" Value="0,5"></Setter>
-                                                    </Style>
-                                                </Grid.Resources>
-
-                                                <Rectangle Grid.Column="0" Height="7" Width="7" 
-                                                           Fill="#FFCC0000" HorizontalAlignment="Center"
-                                                           RenderTransformOrigin="0.5,0.5">
-                                                    <Rectangle.RenderTransform>
-                                                        <TransformGroup>
-                                                            <RotateTransform Angle="45"/>
-                                                        </TransformGroup>
-                                                    </Rectangle.RenderTransform>
-                                                </Rectangle>
-
-                                                <Grid Grid.Column="1">
-                                                    <TextBlock Text="{Binding StartTime, StringFormat=hh\\:mm}" 
-                                                               HorizontalAlignment="Center" Foreground="#ffdc73" FontSize="13"></TextBlock>
-                                                </Grid>
-                                                <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                                                    <TextBlock Text="{Binding Name, Converter={StaticResource CaseConverter}}" 
-                                                               Foreground="#ffc107" FontSize="14" Margin="0"></TextBlock>
-                                                    <TextBlock Text="{Binding Map, Converter={StaticResource CaseConverter}}" 
-                                                               Foreground="#5cb85c" FontSize="10" Margin="0,5,0,0"></TextBlock>
-                                                </StackPanel>
-
-                                                <Rectangle Grid.Column="3" Height="7" Width="7" 
-                                                           Fill="#FFCC0000" HorizontalAlignment="Center"
-                                                           RenderTransformOrigin="0.5,0.5">
-                                                    <Rectangle.RenderTransform>
-                                                        <TransformGroup>
-                                                            <RotateTransform Angle="45"/>
-                                                        </TransformGroup>
-                                                    </Rectangle.RenderTransform>
-                                                </Rectangle>
-                                            </Grid>
-                                        </Border>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </Grid>
-
-                        <!--#region Faction Balance-->
-                        <Grid Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" 
-                               Margin="5,5">
-                            <Border Height="24" BorderThickness="1" BorderBrush="#3F888888">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="{Binding AoL}"></ColumnDefinition>
-                                        <ColumnDefinition Width="{Binding UoF}"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="0" ToolTip="Alliance of Light" 
-                                              Background="#014CCC">
-                                        <Label Foreground="White" FontSize="11" 
-                                                   FontFamily="Fonts/#Futura PT Book"
-                                                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                                                   Content="{Binding Path=BalanceAoL}" ContentStringFormat="P1">
-                                        </Label>
-                                    </Grid>
-                                    <Grid Grid.Column="1" ToolTip="Union of Fury"
-                                          Background="#AA211C">
-                                        <Label Foreground="White" FontSize="11" 
-                                                   FontFamily="Fonts/#Futura PT Book" 
-                                                   HorizontalAlignment="Right" VerticalAlignment="Center"
-                                                   Content="{Binding BalanceUoF}" ContentStringFormat="P1">
-                                        </Label>
-                                    </Grid>
-                                </Grid>
-                            </Border>
-                        </Grid>
-                        <!--#endregion -->
-                    </Grid>
-                    <!--#endregion-->
-
-                    <!--#region Right column-->
-                    <Grid Grid.Column="1" Background="#D813141a" Margin="15,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Border BorderThickness="0,0,0,2" BorderBrush="#cc0000" Margin="10,7,15,0">
-                            <Label Content="SERVER NEWS"
-                                   FontSize="20" Foreground="White"
-                                   FontFamily="/Updater;component/Fonts/#Futura PT Medium"></Label>
-                        </Border>
-                        <ListView x:Name="NewsListView" Grid.Row="1" Focusable="False"
+                    <Grid Background="#D813141a" Margin="0,0">
+                        <ListView x:Name="NewsListView" Focusable="False"
                                   HorizontalContentAlignment="Stretch" 
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                                   ScrollViewer.VerticalScrollBarVisibility="Auto" 
                                   Background="Transparent" BorderThickness="0" 
-                                  HorizontalAlignment="Left" VerticalAlignment="Top"
+                                  HorizontalAlignment="Center" VerticalAlignment="Top"
                                   ItemsSource="{Binding News}"
                                   Margin="0,5,0,0">
                             <ListView.ItemTemplate>
                                 <DataTemplate DataType="content:NewsItem">
                                     <Border Margin="10,7,15,0" BorderThickness="1" 
                                             VerticalAlignment="Top" Background="Transparent" 
-                                            Width="720">
+                                            Width="870">
                                         <Border.Style>
                                             <Style TargetType="Border">
                                                 <Style.Triggers>
@@ -364,23 +161,16 @@
                                                     <RowDefinition Height="Auto"></RowDefinition>
                                                 </Grid.RowDefinitions>
                                                 <!-- Title -->
-                                                <Grid Background="#0F000000">
+                                                <Grid >
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition></ColumnDefinition>
                                                         <ColumnDefinition Width="200"></ColumnDefinition>
                                                     </Grid.ColumnDefinitions>
-                                                    <StackPanel Orientation="Horizontal" Margin="10" >
-                                                        <Rectangle Height="8" Width="8" Fill="#FFCC0000" RenderTransformOrigin="0.5,0.5">
-                                                            <Rectangle.RenderTransform>
-                                                                <TransformGroup>
-                                                                    <RotateTransform Angle="45"/>
-                                                                </TransformGroup>
-                                                            </Rectangle.RenderTransform>
-                                                        </Rectangle>
+                                                    <StackPanel Orientation="Horizontal" Margin="0,0" >
                                                         <TextBlock Text="{Binding Title, Converter={StaticResource CaseConverter}}"
                                                                    VerticalAlignment="Center" 
-                                                           FontSize="16" Foreground="#FFB89B6F" FontFamily="Fonts/#Futura PT Medium"
-                                                           Margin="10,0">
+                                                           FontSize="16" Foreground="White" FontFamily="Fonts/#Futura PT Medium"
+                                                           Margin="0,0">
                                                         </TextBlock>
                                                     </StackPanel>
                                                     <TextBlock Grid.Column="1" Text="{Binding DateLabel}" VerticalAlignment="Center" Margin="10"
@@ -392,8 +182,8 @@
                                                 <!-- Desc -->
                                                 <Grid Grid.Row="1" VerticalAlignment="Top" Margin="0,0,10,5">
                                                     <TextBlock Text="{Binding Desc}" 
-                                                       HorizontalAlignment="Left" Margin="5"
-                                                       FontSize="13" Foreground="White" FontFamily="Fonts/#Proxima Nova Rg"
+                                                       HorizontalAlignment="Left" Margin="0,5"
+                                                       FontSize="14" Foreground="#FFACACAC" FontFamily="Fonts/#Proxima Nova Rg"
                                                        TextWrapping="Wrap" TextAlignment="Left" 
                                                        LineStackingStrategy="BlockLineHeight" LineHeight="22">
                                                     </TextBlock>
@@ -402,7 +192,7 @@
                                                 <!-- Read More -->
                                                 <Grid Grid.Row="2">
                                                     <Grid Width="85" Height="28" HorizontalAlignment="Right"
-                                                            Margin="0,-15,0,5" Cursor="Hand" MouseLeftButtonDown="Link_OnClick"
+                                                            Margin="0,-15,10,5" Cursor="Hand" MouseLeftButtonDown="Link_OnClick"
                                                             Tag="{Binding LinkUrl}"
                                                             Visibility="{Binding ButtonVisibility}">
                                                         <Grid.Style>
@@ -419,7 +209,7 @@
                                                         </Grid.Style>
                                                         <Label HorizontalAlignment="Center" VerticalAlignment="Center" 
                                                                FontFamily="Fonts/#Proxima Nova Rg" FontSize="12" 
-                                                               Foreground="#FFE23131" Content="{Binding Button}"></Label>
+                                                               Foreground="#FF4C8DDA" Content="{Binding Button}"></Label>
                                                     </Grid>
                                                 </Grid>
                                             </Grid>
@@ -429,14 +219,13 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </Grid>
-                    <!--#endregion-->
 
                 </Grid>
                 <!--#endregion-->
 
                 <!--#region Bottom-->
                 <Border Grid.Row="3" BorderThickness="0,1,0,0" BorderBrush="#303337" >
-                    <Grid Background="#F2141414">
+                    <Grid Background="#111216">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"></RowDefinition>
                             <RowDefinition Height="4.5*"></RowDefinition>
@@ -445,15 +234,15 @@
                         <Grid Margin="25,0,25,-30" Height="30">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                <ColumnDefinition Width="400"></ColumnDefinition>
+                                <ColumnDefinition Width="300"></ColumnDefinition>
                                 <ColumnDefinition Width="100"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid.Resources>
                                 <Style TargetType="Label">
                                     <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
-                                    <Setter Property="Foreground" Value="LightGray"></Setter>
-                                    <Setter Property="FontFamily" Value="Fonts/#Proxima Nova Rg"></Setter>
+                                    <Setter Property="Foreground" Value="DarkGray"></Setter>
+                                    <Setter Property="FontFamily" Value="Fonts/#Futura PT Book"></Setter>
                                     <Setter Property="FontSize" Value="13"></Setter>
                                 </Style>
                             </Grid.Resources>
@@ -463,40 +252,41 @@
                                       FontFamily="Fonts/#Proxima Nova Rg"
                                       Click="EffectsOff_Click"
                                       Margin="10,0"
-                                      IsEnabled="{Binding IsStartGameEnabled}">DISABLE EFFECTS</CheckBox>
+                                      IsEnabled="{Binding IsStartGameEnabled}">EFFECTS OFF</CheckBox>
                             <Label Grid.Column="1" Content="{Binding Label1, Converter ={StaticResource CaseConverter}}"
                                    HorizontalAlignment="Center" />
                             <Label Grid.Column="2" Content="{Binding Label2, Converter ={StaticResource CaseConverter}}" 
                                    HorizontalAlignment="Center" ></Label>
                             <Label Grid.Column="3" Content="{Binding Label3, Converter ={StaticResource CaseConverter}}" ></Label>
 
+
                         </Grid>
 
                         <!--#region Progress and Start-->
                         <Grid Grid.Row="1" VerticalAlignment="Top" Height="70" Margin="20,0,10,0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="800"></ColumnDefinition>
+                                <ColumnDefinition Width="710"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <!-- Progress Light-->
                             <Border Grid.Column="0" VerticalAlignment="Top" 
-                                    Margin="0,13" Height="16" Width="770"
+                                    Margin="0,13" Height="16" Width="710"
                                 BorderThickness="1" BorderBrush="#3F473A23">
                                 <Border BorderThickness="1" BorderBrush="#303337">
                                     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Left"
-                                      Background="#FFFB3636" Width="{Binding ProgressLight}" 
+                                      Background="#FF3687FB" Width="{Binding ProgressLight}" 
                                       Canvas.ZIndex="1">
                                     </Grid>
                                 </Border>
                             </Border>
                             <!-- Progress Dark-->
-                            <Border Grid.Column="0" VerticalAlignment="Bottom" Width="770" 
+                            <Border Grid.Column="0" VerticalAlignment="Bottom" Width="710" 
                                     Margin="0,13" Height="16"
                                 BorderThickness="1" BorderBrush="#3F473A23">
                                 <Border BorderThickness="1" BorderBrush="#303337">
                                     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Left"
-                                      Background="#AA211C" Width="{Binding ProgressDark}" 
+                                      Background="#FF25559B" Width="{Binding ProgressDark}" 
                                       Canvas.ZIndex="1">
                                     </Grid>
                                 </Border>
@@ -507,34 +297,34 @@
                                     BorderThickness="0" ClipToBounds="True" 
                                     Click="StartButton_Click" 
                                     IsEnabled="{Binding IsStartGameEnabled}" 
-                                    Width="240" Height="50" 
+                                    Width="180" Height="50" 
                                     HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Button.Template>
                                     <ControlTemplate TargetType="{x:Type Button}">
                                         <Border Name="border"  BorderThickness="2,1,2,1" 
                                                 BorderBrush="#FF323435">
-                                            <Grid Name="grid" Background="#FF1D1F20">
+                                            <Grid Name="grid" Background="#FF191921">
                                                 <Label Name="label" FontFamily="Fonts/#Proxima Nova Rg"
-                                                       Foreground="White" FontSize="16"
+                                                       Foreground="#FFB2B2B2" FontSize="16"
                                                        HorizontalAlignment="Center" VerticalAlignment="Center">START GAME</Label>
                                             </Grid>
                                         </Border>
 
                                         <ControlTemplate.Triggers>
                                             <Trigger Property="IsMouseOver" Value="true">
-                                                <Setter TargetName="border" Property="BorderBrush" Value="#FF302C24" />
-                                                <Setter TargetName="grid" Property="Background" Value="#FF302C24" />
-                                                <Setter TargetName="label" Property="Foreground" Value="#caa357" />
+                                                <Setter TargetName="border" Property="BorderBrush" Value="#FF283A53" />
+                                                <Setter TargetName="grid" Property="Background" Value="#FF242430" />
+                                                <Setter TargetName="label" Property="Foreground" Value="White" />
                                             </Trigger>
                                             <Trigger Property="IsEnabled" Value="false">
-                                                <Setter TargetName="border" Property="BorderBrush" Value="#FF635B50" />
+                                                <Setter TargetName="border" Property="BorderBrush" Value="#FF505663" />
                                                 <Setter TargetName="grid" Property="Background" Value="#FF23272C" />
                                                 <Setter TargetName="label" Property="Foreground" Value="#FF898782" />
                                             </Trigger>
                                             <Trigger Property="IsPressed" Value="true">
                                                 <Setter TargetName="border" Property="BorderBrush" Value="#FF4C8DDA" />
                                                 <Setter TargetName="grid" Property="Background" Value="#FF101317" />
-                                                <Setter TargetName="label" Property="Foreground" Value="#FF917241" />
+                                                <Setter TargetName="label" Property="Foreground" Value="#FF416D91" />
                                             </Trigger>
                                         </ControlTemplate.Triggers>
                                     </ControlTemplate>
@@ -547,7 +337,7 @@
                 </Border>
                 <!--#endregion-->
             </Grid>
-        </Border>
-    </Grid>
+        </Grid>
+    </Border>
 </Window>
  
