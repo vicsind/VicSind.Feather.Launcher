@@ -37,7 +37,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Icon-3.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -160,6 +160,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Icon-2.ico" />
+    <Resource Include="Icon-3.ico" />
     <Content Include="Resources\dll\DotNetZip.dll" />
     <Content Include="Resources\dll\Newtonsoft.Json.dll" />
   </ItemGroup>

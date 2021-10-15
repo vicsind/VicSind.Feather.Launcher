@@ -254,7 +254,7 @@ namespace Updater.SAH
         /// <returns></returns>
         private static string GetFileName(string fileName)
         {
-            string extension = Path.GetExtension(fileName).ToLower();
+            string extension = Path.GetExtension(fileName)?.ToLower();
             switch (extension)
             {
                 case ".eft" when Settings.Default.EffectsOff:

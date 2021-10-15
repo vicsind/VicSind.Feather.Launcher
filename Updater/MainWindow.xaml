@@ -12,7 +12,7 @@
         HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
         HorizontalAlignment="Center" VerticalAlignment="Center" 
         ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.IsSharedSizeScope="True" 
-        Icon="icon.ico" Loaded="MainWindow_OnLoaded" 
+        Icon="icon-3.ico" Loaded="MainWindow_OnLoaded" 
         Height="590" Width="955" MinHeight="590" MinWidth="955" 
         BorderThickness="1" Background="Transparent">
     <Window.Resources>
@@ -32,8 +32,11 @@
     </Window.Resources>
     <Border BorderThickness="1" BorderBrush="#303337">
 
-        <Grid Background="#0a0a0a">
-            <Grid Height="585" VerticalAlignment="Bottom">
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/content-bg.jpg" Stretch="UniformToFill"></ImageBrush>
+            </Grid.Background>
+            <Grid Height="590" VerticalAlignment="Bottom">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="43"></RowDefinition>
                     <RowDefinition Height="34"></RowDefinition>
@@ -75,7 +78,7 @@
 
                 <!--#region SubMenu-->
                 <Border Grid.Row="1" BorderThickness="0,1,0,1" BorderBrush="#303337" >
-                    <Grid Background="#FF101015">
+                    <Grid Background="#F2101015">
                         <!--#region Links-->
                         <StackPanel Orientation="Horizontal" Margin="15,0" x:Name="LinksPanel">
                             <StackPanel.Resources>
@@ -113,9 +116,6 @@
 
                 <!--#region Content-->
                 <Grid Grid.Row="2">
-                    <Grid.Background>
-                        <ImageBrush ImageSource="Images/content-bg.jpg" Stretch="UniformToFill"></ImageBrush>
-                    </Grid.Background>
 
                     <Grid Background="#D813141a" Margin="0,0">
                         <ListView x:Name="NewsListView" Focusable="False"
