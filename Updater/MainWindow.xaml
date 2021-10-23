@@ -48,6 +48,21 @@
                 <Border Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="Black" MouseLeftButtonDown="Window_MouseLeftButtonDown" >
                     <Grid Background="#FF0C0D0F">
 
+                        <!--#region PlayersOnline-->
+                        <StackPanel Orientation="Horizontal" Margin="15,5,15,0" VerticalAlignment="Center">
+                            <StackPanel.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                    <Setter Property="FontSize" Value="12"></Setter>
+                                    <Setter Property="FontFamily" Value="Fonts/#Proxima Nova Rg"></Setter>
+                                    <Setter Property="Foreground" Value="White"></Setter>
+                                    <Setter Property="Cursor" Value="Arrow"></Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Label Content="{Binding Players}" VerticalAlignment="Center" VerticalContentAlignment="Center"></Label>
+                        </StackPanel>
+                        <!--#endregion-->
+
                         <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"
                                FontFamily="Fonts/#ExyleC" FontSize="32">SHAIYA UPDATER</Label>
                         <StackPanel Orientation="Horizontal" Margin="5,0" HorizontalAlignment="Right" VerticalAlignment="Top" >
@@ -118,6 +133,44 @@
                 <Grid Grid.Row="2">
 
                     <Grid Background="#D813141a" Margin="0,0">
+
+                        <Border Width="300" BorderBrush="#303337"
+                                BorderThickness="0,1,1,0"
+                                HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                            <Grid Background="#4C000000">
+                                <StackPanel Margin="5">
+                                    <Label Content="FACTION BALANCE" HorizontalAlignment="Center"
+                                           FontFamily="Fonts/#Proxima Nova Rg"
+                                           Foreground="White"></Label>
+                                    <Border Height="24" BorderThickness="1" BorderBrush="#3F888888">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="{Binding AoL}"></ColumnDefinition>
+                                                <ColumnDefinition Width="{Binding UoF}"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Grid.Column="0" ToolTip="Alliance of Light" 
+                                                  Background="#15315a">
+                                                <Label Foreground="White" FontSize="11" 
+                                                       FontFamily="Fonts/#Futura PT Book"
+                                                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                                                       Content="{Binding Path=BalanceAoL}" ContentStringFormat="P1">
+                                                </Label>
+                                            </Grid>
+                                            <Grid Grid.Column="1" ToolTip="Union of Fury"
+                                                  Background="#621b1b">
+                                                <Label Foreground="White" FontSize="11" 
+                                                       FontFamily="Fonts/#Futura PT Book" 
+                                                       HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                       Content="{Binding BalanceUoF}" ContentStringFormat="P1">
+                                                </Label>
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </StackPanel>
+
+                            </Grid>
+                        </Border>
+
                         <ListView x:Name="NewsListView" Focusable="False"
                                   HorizontalContentAlignment="Stretch" 
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 

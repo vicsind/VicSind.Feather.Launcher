@@ -51,8 +51,8 @@ namespace Updater.Content
                 //var actualEvents = await UpdaterContent.LoadEvents();
                 //ViewModel.SetActualEvents(actualEvents);
 
-                //await UpdatePlayersOnline();
-                //await UpdateFactionBalance();
+                await UpdatePlayersOnline();
+                await UpdateFactionBalance();
                 await CheckServerStatus();
             }
             catch
