@@ -128,6 +128,10 @@ namespace Updater.ViewModels
         /// </summary>
         public ObservableCollection<ActualEvent> ActualEvents { get; set; } = new ObservableCollection<ActualEvent>();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ServerName { get; set; }
 
         /// <summary>
         /// Текстовая метка 1

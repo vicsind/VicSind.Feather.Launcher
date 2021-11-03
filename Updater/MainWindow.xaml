@@ -64,7 +64,7 @@
                         <!--#endregion-->
 
                         <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"
-                               FontFamily="Fonts/#ExyleC" FontSize="32">SHAIYA UPDATER</Label>
+                               FontFamily="Fonts/#ExyleC" FontSize="32" Content="{Binding ServerName}"></Label>
                         <StackPanel Orientation="Horizontal" Margin="5,0" HorizontalAlignment="Right" VerticalAlignment="Top" >
                             <!--#region CloseButton-->
                             <Button Content="" x:Name="CloseButton" Width="40" Height="40" IsCancel="True" BorderThickness="0" Cursor="Hand" 

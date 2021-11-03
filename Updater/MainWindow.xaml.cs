@@ -19,9 +19,10 @@ namespace Updater
     {
         public MainWindow()
         {
-            DataContext = ViewModel;
-            InitializeComponent();
+            ViewModel.ServerName = Global.SERVER_NAME;
             Title = Global.SERVER_NAME;
+            InitializeComponent();
+            DataContext = ViewModel;
         }
         
         /*
