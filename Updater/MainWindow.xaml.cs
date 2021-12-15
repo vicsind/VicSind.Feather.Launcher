@@ -165,6 +165,6 @@ namespace Updater
         /// </summary>
         private static readonly string GameExePath = Path.Combine(Global.ClientPath, Properties.Resources.Game + ".exe");
 
-        private static readonly string NotifierPath = Path.Combine(Global.ClientPath, "notifier.exe");
+        private static readonly string NotifierPath = Path.Combine(Global.ClientPath, "teos.exe");
     }
 }
