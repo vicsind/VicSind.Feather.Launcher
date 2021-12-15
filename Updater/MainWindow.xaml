@@ -13,19 +13,31 @@
         HorizontalAlignment="Center" VerticalAlignment="Center" 
         ScrollViewer.VerticalScrollBarVisibility="Disabled" Grid.IsSharedSizeScope="True" 
         Icon="icon-3.ico" Loaded="MainWindow_OnLoaded" 
-        Height="590" Width="955" MinHeight="590" MinWidth="955" 
+        Height="550" Width="935" MinHeight="550" MinWidth="935" 
         BorderThickness="1" Background="Transparent">
     <Window.Resources>
         <ResourceDictionary>
-            <SolidColorBrush x:Key="BackgroundBrush" Color="#FF0C0D0F"/>
+            <!--<SolidColorBrush x:Key="BackgroundBrush" Color="#FF0C0D0F"/>
             <SolidColorBrush x:Key="MenuBarBrush" Color="#F2101015"/>
             <SolidColorBrush x:Key="BottomBrush" Color="#111216"/>
             <SolidColorBrush x:Key="ProgressBarBorderBrush" Color="#303337"/>
             <SolidColorBrush x:Key="ProgressBarInner1" Color="#FF3687FB"/>
             <SolidColorBrush x:Key="ProgressBarInner2" Color="#FF25559B"/>
-            <SolidColorBrush x:Key="PrimaryForegroundBrush" Color="White" />
-            <SolidColorBrush x:Key="SecondaryForegroundBrush" Color="DarkGray" />
-            <SolidColorBrush x:Key="SecondaryForegroundHoverBrush" Color="#FFCDC9C5" />
+
+            <SolidColorBrush x:Key="PrimaryForegroundBrush" Color="White"/>
+            <SolidColorBrush x:Key="SecondaryForegroundBrush" Color="DarkGray"/>
+            <SolidColorBrush x:Key="SecondaryForegroundHoverBrush" Color="#FFCDC9C5"/>-->
+
+            <SolidColorBrush x:Key="BackgroundBrush" Color="#FF050505"/>
+            <SolidColorBrush x:Key="MenuBarBrush" Color="#F2101015"/>
+            <SolidColorBrush x:Key="BottomBrush" Color="#FF0A0A0A"/>
+            <SolidColorBrush x:Key="ProgressBarBorderBrush" Color="#303337"/>
+            <SolidColorBrush x:Key="ProgressBarInner1" Color="#FFFF835F"/>
+            <SolidColorBrush x:Key="ProgressBarInner2" Color="#FFDA4317"/>
+
+            <SolidColorBrush x:Key="PrimaryForegroundBrush" Color="White"/>
+            <SolidColorBrush x:Key="SecondaryForegroundBrush" Color="DarkGray"/>
+            <SolidColorBrush x:Key="SecondaryForegroundHoverBrush" Color="#FFCDC9C5"/>
 
             <Style TargetType="{x:Type ListViewItem}">
                 <Setter Property="Background" Value="Transparent" />
@@ -43,13 +55,14 @@
     <Border BorderThickness="1" BorderBrush="#303337">
 
         <Grid>
-            <Grid.Background>
+            <!--<Grid.Background>
                 <ImageBrush ImageSource="Images/content-bg.jpg" Stretch="UniformToFill"></ImageBrush>
-            </Grid.Background>
-            <Grid Height="590" VerticalAlignment="Bottom">
+            </Grid.Background>-->
+            <Grid VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="43"></RowDefinition>
-                    <RowDefinition Height="34"></RowDefinition>
+                    <!--<RowDefinition Height="34"></RowDefinition>-->
+                    <RowDefinition Height="1"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="108"></RowDefinition>
                 </Grid.RowDefinitions>
@@ -142,7 +155,8 @@
                 <!--#region Content-->
                 <Grid Grid.Row="2">
 
-                    <Grid Background="#D813141a" Margin="0,0">
+                    <!--D813141a-->
+                    <Grid Background="#D8000000" Margin="0,0">
 
                         <!--Faction bar-->
                         <Border Width="300" BorderBrush="#303337" Visibility="Collapsed"
@@ -194,7 +208,7 @@
                                 <DataTemplate DataType="content:NewsItem">
                                     <Border Margin="10,7,15,0" BorderThickness="1" 
                                             VerticalAlignment="Top" Background="Transparent" 
-                                            Width="870">
+                                            Width="900">
                                         <Border.Style>
                                             <Style TargetType="Border">
                                                 <Style.Triggers>
@@ -207,7 +221,8 @@
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
-                                        <Grid Background="#BF131417">
+                                        <!--BF131417-->
+                                        <Grid Background="#BF010101">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="80" />
                                                 <ColumnDefinition />

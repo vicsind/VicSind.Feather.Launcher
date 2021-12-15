@@ -114,7 +114,6 @@ namespace Updater
                 Logger.LogError(ex);
             }
         }
-
         
         
 
@@ -165,6 +164,6 @@ namespace Updater
         /// </summary>
         private static readonly string GameExePath = Path.Combine(Global.ClientPath, Properties.Resources.Game + ".exe");
 
-        private static readonly string NotifierPath = Path.Combine(Global.ClientPath, "teos.exe");
+        private static readonly string NotifierPath = Path.Combine(Global.ClientPath, Global.NOTIFIER_FILENAME);
     }
 }

@@ -26,6 +26,7 @@ namespace Updater.Common
 
         private static readonly string[] SiteUrls =
         {
+            //"https://api.shaiya-sanctuary.com/",
             "https://api.shaiya-end.com/",
             //"https://api.shaiya-universe.com/",
             //"https://localhost:44313/"
@@ -104,7 +105,12 @@ namespace Updater.Common
         /// <summary>
         /// 
         /// </summary>
-        public const string SERVER_NAME = "Shaiya End";
+        public static string NOTIFIER_FILENAME = "teos.exe";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public const string SERVER_NAME = "SANCTUARY SHAIYA";
 
         /// <summary>
         /// Название файла апдейтера
