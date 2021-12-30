@@ -26,8 +26,8 @@ namespace Updater.Common
 
         private static readonly string[] SiteUrls =
         {
-            //"https://api.shaiya-sanctuary.com/",
-            "https://api.shaiya-end.com/",
+            "https://api.shaiya-sanctuary.com/",
+            //"https://api.shaiya-end.com/",
             //"https://api.shaiya-universe.com/",
             //"https://localhost:44313/"
         };
