@@ -55,9 +55,10 @@
     <Border BorderThickness="1" BorderBrush="#303337">
 
         <Grid>
-            <!--<Grid.Background>
-                <ImageBrush ImageSource="Images/content-bg.jpg" Stretch="UniformToFill"></ImageBrush>
-            </Grid.Background>-->
+            <Grid.Background>
+                <!--<ImageBrush ImageSource="Images/content-bg.jpg" Stretch="UniformToFill"></ImageBrush>-->
+                <ImageBrush ImageSource="Images/bg.png" Stretch="Uniform"></ImageBrush>
+            </Grid.Background>
             <Grid VerticalAlignment="Stretch">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="43"></RowDefinition>

@@ -81,14 +81,14 @@ namespace Updater
             try
             {
                 // Закрыть игру
-                Helper.ShutdownProcess("game");
-                if (Global.IsGameStarted())
-                {
-                    string text = Strings.Get(StringType.REQUIRED_CLOSE_THE_GAME);
-                    string caption = Strings.Get(StringType.ERROR);
-                    MessageBox.Show(text, caption, MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
+                //Helper.ShutdownProcess("game");
+                //if (Global.IsGameStarted())
+                //{
+                //    string text = Strings.Get(StringType.REQUIRED_CLOSE_THE_GAME);
+                //    string caption = Strings.Get(StringType.ERROR);
+                //    MessageBox.Show(text, caption, MessageBoxButton.OK, MessageBoxImage.Error);
+                //    return;
+                //}
 
                 foreach (string necessaryFile in Global.ClientFiles)
                 {
