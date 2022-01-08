@@ -163,7 +163,7 @@
   <ItemGroup>
     <Resource Include="Icon-2.ico" />
     <Resource Include="Icon-3.ico" />
-    <Resource Include="Images\bg.png" />
+    <Resource Include="Images\bg.jpg" />
     <Content Include="Resources\dll\DotNetZip.dll" />
     <Content Include="Resources\dll\Newtonsoft.Json.dll" />
   </ItemGroup>
