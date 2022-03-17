@@ -26,7 +26,7 @@ namespace Updater.Common
 
         private static readonly string[] SiteUrls =
         {
-            "https://api.shaiya-sanctuary.com/",
+            "https://api.shaiya-inferno.com/",
             //"https://api.shaiya-end.com/",
             //"https://api.shaiya-universe.com/",
             //"https://localhost:44313/"
@@ -110,7 +110,7 @@ namespace Updater.Common
         /// <summary>
         /// 
         /// </summary>
-        public const string SERVER_NAME = "SANCTUARY SHAIYA";
+        public const string SERVER_NAME = "SHAIYA INFERNO";
 
         /// <summary>
         /// Название файла апдейтера

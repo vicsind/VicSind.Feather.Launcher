@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
 using System.Threading;
-using System.Windows;
 using Updater.Logging;
 
 namespace Updater
