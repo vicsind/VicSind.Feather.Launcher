@@ -26,7 +26,8 @@ namespace Updater.Common
 
         private static readonly string[] SiteUrls =
         {
-            "https://api.shaiya-inferno.com/",
+            "https://api.shaiyawonder.com/",
+            //"https://api.shaiya-inferno.com/",
             //"https://api.shaiya-end.com/",
             //"https://api.shaiya-universe.com/",
             //"https://localhost:44313/"
@@ -35,34 +36,7 @@ namespace Updater.Common
         /// <summary>
         /// Путь к сайту
         /// </summary>
-        public static string SiteUrl
-        {
-            get
-            {
-                return SiteUrls.First();
-                //if (string.IsNullOrEmpty(_siteUrl))
-                //{
-                //    foreach (string url in SiteUrls)
-                //    {
-                //        try
-                //        {
-                //            new WebClient().OpenRead(url);
-                //            // Success
-                //            _siteUrl = url;
-                //            return url;
-                //        }
-                //        catch
-                //        {
-                //            // ignored
-                //        }
-                //    }
-                //}
-
-                //_siteUrl = SiteUrls.First();
-                //return _siteUrl;
-            }
-        }
-        private static string _siteUrl;
+        public static string SiteUrl => SiteUrls.First();
 
         
         /// <summary>
@@ -105,12 +79,12 @@ namespace Updater.Common
         /// <summary>
         /// 
         /// </summary>
-        public static string NOTIFIER_FILENAME = "teos.exe";
+        public static string NOTIFIER_FILENAME = "discord-helper.exe";
 
         /// <summary>
         /// 
         /// </summary>
-        public const string SERVER_NAME = "SHAIYA INFERNO";
+        public const string SERVER_NAME = "SHAIYA WONDER";
 
         /// <summary>
         /// Название файла апдейтера

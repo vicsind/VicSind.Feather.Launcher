@@ -19,7 +19,7 @@ namespace Updater
         /// <summary>
         /// Current Application ID.
         /// </summary>
-        private const string GUID = "e038fab3-b6c3-4743-a2dc-a6675f803645";
+        private const string GUID = "e038fab3-b6c3-4743-a2dc-a6675f803646";
 
         [STAThread]
         public static void Main(string[] args)

@@ -160,7 +160,7 @@
                     <Grid Background="#D8000000" Margin="0,0">
 
                         <!--Faction bar-->
-                        <Border Width="300" BorderBrush="#303337" Visibility="Collapsed"
+                        <Border Width="300" BorderBrush="#303337" Visibility="Visible"
                                 BorderThickness="0,1,1,0"
                                 HorizontalAlignment="Left" VerticalAlignment="Bottom">
                             <Grid Background="#4C000000">
