@@ -153,12 +153,6 @@
     <Resource Include="Images\faction-dark.png" />
     <Resource Include="Images\faction-light.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\content-bg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Title.png" />
-  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Resource Include="Icon-2.ico" />
