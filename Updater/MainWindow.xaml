@@ -157,7 +157,7 @@
                     </Grid.Background>
 
                     <!--D813141a-->
-                    <Grid Background="#D8000000" Margin="0,0">
+                    <Grid Background="#28000000" Margin="0,0">
 
                         <!--Faction bar-->
                         <Border Width="300" BorderBrush="#303337" Visibility="Visible"
