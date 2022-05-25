@@ -10,7 +10,7 @@ namespace Updater.Common
         /// <summary>
         /// Игра запущена в данный момент.
         /// </summary>
-        public static bool IsGameStarted() => Process.GetProcessesByName("game").Length != 0;
+        public static bool IsGameStarted() => Process.GetProcessesByName("game").Any(x => x.MainWindowTitle == "WONDER");
 
         /// <summary>
         /// Location of updater file.
